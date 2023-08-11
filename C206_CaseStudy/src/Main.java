@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class Main {
@@ -326,7 +325,7 @@ public class Main {
 
 
 }
-=======
+
 import java.util.ArrayList;
 
 public class Main {
