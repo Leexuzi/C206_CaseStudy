@@ -24,40 +24,31 @@ public class Main {
 		
 		int option = 0;
 		int user = 0;
+		
+		option = Helper.readInt("a");
+		//if login was chosen
+		if(option == 2) {
+			int result = login();
+			if(result == 1) {
+				int userOption = 0;
+				parentMenu();
+				while (userOption!=5) {
+					
+					option = Helper.readInt("a");
 
-		while (option != 3) {
-
-			//this is the log in sign up page
-			Main.mainMenu();
-			if(user is parent) {
-				
-				Main.parentMenu();
-				
-				int option = 0;
-				while (option != 5){
-					 if(option 1) {
-						 see all menus;
-					 }
-					 
+					if(userOption == 1) {
+						System.out.println("1");
+					}
 				}
 			}
-			else if(user is vendor) {
-				
-				Main.vendorMenu();
-				
-				int option = 0;
-				while (option != 6){
-					
-				}
+			else if(result == 2) {
+//				vendorMenu();
 			}
-			else if(user is admin) {
-				
-				Main.adminMenu();
-				
-				int option = 0;
-				while (option != 11){
-					
-				}
+			else if(result == 3){
+//				adminMenu();
+			}
+			else{
+				System.out.println("Login in failed");
 			}
 		}
     }
