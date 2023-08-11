@@ -1,36 +1,22 @@
 public class MenuItem {
-    private String item;
-    private String description;
-    private double price;
+    private String food;
+    private int quantity;
 
-    public MenuItem(String item, String description, double price) {
-        this.item = item;
-        this.description = description;
-        this.price = price;
+    public MenuItem(String food, int quantity) {
+        this.food = food;
+        this.quantity = quantity;
     }
 
-    public String getItem() {
-        return item;
+    public String getFood() {
+        return food;
     }
 
-    public void setItem(String item) {
-        this.item = item;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+    @Override
+    public String toString() {
+        return "Food: " + food + ", Quantity: " + quantity;
     }
 }
-// Wayne
