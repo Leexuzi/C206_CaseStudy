@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class C206_CaseStudy {
+public class Main {
 
     public static void main(String[] args) {
         // Sample code for demonstrating interactions
@@ -26,18 +26,18 @@ public class C206_CaseStudy {
 
 		while (option != 5) {
 
-			C206_CaseStudy.MenuItem();
+			Main.MenuItem();
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
 				// View all items
-				C206_CaseStudy.viewAllUser(UserList);
-				C206_CaseStudy.viewAllMenuItem(MenuItemList);
-				C206_CaseStudy.viewAllSchool(SchoolList);
-				C206_CaseStudy.viewAlParents(ParentList);
-				C206_CaseStudy.viewAllOrder(OrderList);
-				C206_CaseStudy.viewAllVendor(VendorList);
-				C206_CaseStudy.viewAllAdmin(AdminList);
+				Main.viewAllUser(UserList);
+				Main.viewAllMenuItem(MenuItemList);
+				Main.viewAllSchool(SchoolList);
+				Main.viewAlParents(ParentList);
+				Main.viewAllOrder(OrderList);
+				Main.viewAllVendor(VendorList);
+				Main.viewAllAdmin(AdminList);
 				//Ashley
 				
 			} else if (option == 2) {
@@ -112,7 +112,7 @@ public class C206_CaseStudy {
 	}
 
 	public static void parentMenu() {
-		C206_CaseStudy.setHeader("SCHOOL LUNCH BOX ORDERING");
+		Main.setHeader("SCHOOL LUNCH BOX ORDERING");
 		System.out.println("1. See all menus");
 		System.out.println("2. Order item");
 		System.out.println("3. See orders");
@@ -122,7 +122,7 @@ public class C206_CaseStudy {
 	}
 	
 	public static void vendorMenu() {
-		C206_CaseStudy.setHeader("LUNCHES");
+		Main.setHeader("LUNCHES");
 		System.out.println("1. See all items");
 		System.out.println("2. Add item");
 		System.out.println("3. Add item");
@@ -133,7 +133,7 @@ public class C206_CaseStudy {
 	}
 	
 	public static void adminMenu() {
-		C206_CaseStudy.setHeader("MANAGEMENT");
+		Main.setHeader("MANAGEMENT");
 		System.out.println("1. See all users");
 		System.out.println("2. See all vendors");
 		System.out.println("3. See all orders");
