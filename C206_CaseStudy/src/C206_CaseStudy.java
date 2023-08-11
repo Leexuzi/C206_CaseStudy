@@ -120,6 +120,17 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 	
+	public static void adminMenu() {
+		C206_CaseStudy.setHeader("MANAGEMENT");
+		System.out.println("1. See all users");
+		System.out.println("2. See all vendors");
+		System.out.println("3. Add vendor");
+		System.out.println("4. ");
+		System.out.println("5. See orders");
+		System.out.println("6. Logout");
+		Helper.line(80, "-");
+	}
+	
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
