@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 
-public class C206_CaseStudy {
+public class C206_Casdy {
 
 	public static void main(String[] args) {
-		
-		
+
 		ArrayList<Camcorder> camcorderList = new ArrayList<Camcorder>();
 		ArrayList<Chromebook> chromebookList = new ArrayList<Chromebook>();
 
