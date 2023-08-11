@@ -1,13 +1,14 @@
+
 public class Vendor extends User {
     private String contactInfo;
     private String address;
-    private String menus;
+    private List<Menu> menus;  // Corrected the type and initialization
 
     public Vendor(String username, String password, String contactInfo, String address) {
         super(username, password);
         this.contactInfo = contactInfo;
         this.address = address;
-        menus = new ArrayList<>();
+        menus = new ArrayList<>();  // Corrected the initialization
     }
 
     // Getters and setters for contactInfo and address
