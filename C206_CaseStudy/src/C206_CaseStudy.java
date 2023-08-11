@@ -108,14 +108,35 @@ public class C206_CaseStudy {
 	}
 
 	public static void parentMenu() {
-		ResourceCentre.setHeader("SCHOOL LUNCH BOX ORDERING");
+		C206_CaseStudy.setHeader("SCHOOL LUNCH BOX ORDERING");
 		System.out.println("1. See all menus");
 		System.out.println("2. Order item");
 		System.out.println("3. See orders");
 		System.out.println("4. Cancel order");
 		System.out.println("5. Logout");
 		Helper.line(80, "-");
-
+	}
+	
+	public static void vendorMenu() {
+		C206_CaseStudy.setHeader("LUNCHES");
+		System.out.println("1. See all items");
+		System.out.println("2. Add item");
+		System.out.println("3. Add item");
+		System.out.println("4. Remove item");
+		System.out.println("5. See orders");
+		System.out.println("6. Logout");
+		Helper.line(80, "-");
+	}
+	
+	public static void adminMenu() {
+		C206_CaseStudy.setHeader("MANAGEMENT");
+		System.out.println("1. See all users");
+		System.out.println("2. See all vendors");
+		System.out.println("3. Add vendor");
+		System.out.println("4. ");
+		System.out.println("5. See orders");
+		System.out.println("6. Logout");
+		Helper.line(80, "-");
 	}
 	
 	public static void setHeader(String header) {
