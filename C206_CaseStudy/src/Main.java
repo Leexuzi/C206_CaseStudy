@@ -23,101 +23,35 @@ public class Main {
 		ordersList.add(new Order(parentsList.get(0), "Ramen"));
 		
 		int option = 0;
+		int user = 0;
+		
+		option = Helper.readInt("a");
+		//if login was chosen
+		if(option == 2) {
+			int result = login();
+			if(result == 1) {
+				int userOption = 0;
+				parentMenu();
+				while (userOption!=5) {
+					
+					option = Helper.readInt("a");
 
-		while (option != 5) {
-
-			Main.mainMenu();
-			option = Helper.readInt("Enter an option > ");
-
-			if(option == 1) {
-				Main.signin();
+					if(userOption == 1) {
+						System.out.println("1");
+					}
+				}
 			}
-			else {
-				Main.login();
+			else if(result == 2) {
+//				vendorMenu();
+			}
+			else if(result == 3){
+//				adminMenu();
+			}
+			else{
+				System.out.println("Login in failed");
 			}
 		}
     }
-//			if (option == 1) {
-//				// View all items
-//				Main.viewAllUser(usersList);
-//				Main.viewAllMenuItem(menuItemsList);
-//				Main.viewAllSchool(schoolsList);
-//				Main.viewAlParents(parentsList);
-//				Main.viewAllOrder(ordersList);
-//				Main.viewAllVendor(vendorsList);
-//				Main.viewAllAdmin(adminsList);
-//				//Ashley
-//				
-//			} else if (option == 2) {
-//				// Add a new item
-//				ResourceCentre.setHeader("ADD");			
-//				ResourceCentre.setHeader("ITEM TYPES");
-//				System.out.println("1. Camcorder");
-//				System.out.println("2. Chromebook");
-//				
-//				int itemType = Helper.readInt("Enter option to select item type > ");
-//
-//				if (itemType == 1) {
-//					// Add a camcorder
-//					Camcorder cc = inputCamcorder();
-//					ResourceCentre.addCamcorder(camcorderList, cc);
-//					System.out.println("Camcorder added");
-//
-//				} else if (itemType == 2) {
-//					// Add a Chromebook
-//					Chromebook cb = inputChromebook();
-//					ResourceCentre.addChromebook(chromebookList, cb);
-//					System.out.println("Chromebook added");
-//
-//				} else {
-//					System.out.println("Invalid type");
-//				}
-//
-//			} else if (option == 3) {
-//				// Loan item
-//				ResourceCentre.setHeader("LOAN");			
-//				ResourceCentre.setHeader("ITEM TYPES");
-//				System.out.println("1. Camcorder");
-//				System.out.println("2. Chromebook");
-//				
-//				int itemType = Helper.readInt("Enter option to select item type > ");
-//
-//				if (itemType == 1) {
-//					// Loan camcorder
-//					ResourceCentre.loanCamcorder(camcorderList);
-//				} else if (itemType == 2) {
-//					// Loan Chromebook
-//					ResourceCentre.loanChromebook(chromebookList);
-//				} else {
-//					System.out.println("Invalid type");
-//				}
-//
-//			} else if (option == 4) {
-//				// Return item
-//				ResourceCentre.setHeader("RETURN");				
-//				ResourceCentre.setHeader("ITEM TYPES");
-//				System.out.println("1. Camcorder");
-//				System.out.println("2. Chromebook");
-//				
-//				int itemType = Helper.readInt("Enter option to select item type > ");
-//				if (itemType == 1) {
-//					// Return camcorder
-//					ResourceCentre.returnCamcorder(camcorderList);
-//				} else if (itemType == 2) {
-//					// Return Chromebook
-//					ResourceCentre.returnChromebook(chromebookList);
-//				} else {
-//					System.out.println("Invalid type");
-//				}
-//
-//			} else if (option == 5) {
-//				System.out.println("Bye!");
-//			} else {
-//				System.out.println("Invalid option");
-//			}
-//
-//		}
-//	}
     
     public static void mainMenu() {
 		Main.setHeader("SCHOOL LUNCH BOX ORDERING SYSTEM");
@@ -181,12 +115,13 @@ public class Main {
     }
 	
 	//sign up option
-	public static void signin() {
+	public static int signin() {
+		setHeader("SIGN IN");
 		
 	}
 	
 	//log in option
-	public static void login() {
+	public static int login() {
 		
 	}
 	
@@ -234,6 +169,74 @@ public class Main {
 
 
 	//================================= Option 1 View all Users =================================
+	
+	
+	
+	public static int signin(ArrayList<User> usersList) {
+	    setHeader("SIGN IN");
+	    
+	    String username = Helper.readString("Enter a username: ");
+	    String password = Helper.readString("Enter a password: ");
+	    int userType = Helper.readInt("Enter user type [0 for user, 1 for parent, 2 for vendor, 3 for admin]: ");
+	    
+	    // Check if the username is already taken or not
+	    for (User user : usersList) {
+	        if (user.getUsername().equals(username)) {
+	            System.out.println("Username already taken. Sign up failed.");
+	            return 0;
+	        }
+	    }
+	    
+	    // Create a new user based on the user type
+	    User newUser;
+	    if (userType == 1) {
+	        String paymentMethod = Helper.readString("Enter preferred payment method: ");
+	        newUser = new Parent(username, password, paymentMethod);
+	    } else if (userType == 2) {
+	        String contactInfo = Helper.readString("Enter contact info: ");
+	        String address = Helper.readString("Enter address: ");
+	        newUser = new Vendor(username, password, contactInfo, address);
+	    } else if (userType == 3) {
+	        newUser = new Admin(username, password);
+	    } else {
+	        newUser = new User(username, password);
+	    }
+	    
+	    usersList.add(newUser);
+	    System.out.println("Sign up successful.");
+	    return 1;
+	}
+	
+
+	public static int login(ArrayList<User> usersList) {
+	    setHeader("LOG IN");
+	    
+	    String username = Helper.readString("Enter your username: ");
+	    String password = Helper.readString("Enter your password: ");
+	    
+	    for (User user : usersList) {
+	        if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+	            if (user instanceof Parent) {
+	                return 1; // Return 1 for parent
+	            } else if (user instanceof Vendor) {
+	                return 2; // Return 2 for vendor
+	            } else if (user instanceof Admin) {
+	                return 3; // Return 3 for admin
+	            } else {
+	                return 0; // Return 0 for user
+	            }
+	        }
+	    }
+	    
+	    System.out.println("Invalid username or password. Login failed.");
+	    return -1; // Return -1 to indicate failure
+	}
+
+	
+	
+	
+	
+	
 	public static void option1View() {
 	    int option = 0;
 
@@ -279,163 +282,140 @@ public class Main {
 	
 	
 	
+	public static void parentMenu(ArrayList<Parent> parentsList, ArrayList<MenuItem> menuItemsList, ArrayList<Order> ordersList) {
+        int option = 0;
+
+        while (option != 5) {
+            setHeader("ORDER PAGE");
+            System.out.println("1. See all menus");
+            System.out.println("2. Order item");
+            System.out.println("3. See orders");
+            System.out.println("4. Cancel order");
+            System.out.println("5. Logout");
+            Helper.line(80, "-");
+
+            option = Helper.readInt("Enter an option > ");
+
+            switch (option) {
+                case 1:
+                    viewAllMenus(menuItemsList);
+                    break;
+                case 2:
+                    // Order Item
+                    break;
+                case 3:
+                    viewAllOrders(ordersList);
+                    break;
+                case 4:
+                    // Cancel order
+                    break;
+                case 5:
+                    System.out.println("Logging out from Parent Menu.");
+                    return;
+                default:
+                    System.out.println("Invalid option. Please choose again.");
+            }
+        }
+    }
+	
+	
+	public static void vendorMenu(ArrayList<Vendor> vendorsList, ArrayList<MenuItem> menuItemsList, ArrayList<Order> ordersList) {
+        int option = 0;
+
+        while (option != 6) {
+            setHeader("MANAGE LUNCHES");
+            System.out.println("1. See all items");
+            System.out.println("2. Add item");
+            System.out.println("3. Remove item");
+            System.out.println("4. See orders");
+            System.out.println("5. Logout");
+            Helper.line(80, "-");
+
+            option = Helper.readInt("Enter an option > ");
+
+            switch (option) {
+                case 1:
+                    viewAllMenus(menuItemsList);
+                    break;
+                case 2:
+                    // Add item
+                    break;
+                case 3:
+                    // Remove item
+                    break;
+                case 4:
+                    viewAllOrders(ordersList);
+                    break;
+                case 5:
+                    System.out.println("Logging out from Vendor Menu.");
+                    return;
+                default:
+                    System.out.println("Invalid option. Please choose again.");
+            }
+        }
+    }
+	
+	
+	 public static void adminMenu(ArrayList<User> usersList, ArrayList<Vendor> vendorsList, ArrayList<Order> ordersList) {
+	        int option = 0;
+
+	        while (option != 11) {
+	            setHeader("MANAGEMENT");
+	            System.out.println("1. See all users");
+	            System.out.println("2. See all vendors");
+	            System.out.println("3. See all orders");
+	            System.out.println("4. See all payments");
+	            System.out.println("5. Add vendor");
+	            System.out.println("6. Edit vendor");
+	            System.out.println("7. Remove vendors");
+	            System.out.println("8. Add school");
+	            System.out.println("9. Edit school");
+	            System.out.println("10. Remove school");
+	            System.out.println("11. Logout");
+	            Helper.line(80, "-");
+
+	            option = Helper.readInt("Enter an option > ");
+
+	            switch (option) {
+	                case 1:
+	                    viewAllUsers(usersList);
+	                    break;
+	                case 2:
+	                    viewAllVendors(vendorsList);
+	                    break;
+	                case 3:
+	                    viewAllOrders(ordersList);
+	                    break;
+	                case 4:
+	                    // viewAllPayments
+	                    break;
+	                case 5:
+	                    //  addVendor 
+	                    break;
+	                case 6:
+	                    //  editVendor 
+	                    break;
+	                case 7:
+	                    //  removeVendors 
+	                    break;
+	                case 8:
+	                    //  addSchool 
+	                    break;
+	                case 9:
+	                    //  editSchool 
+	                    break;
+	                case 10:
+	                    //  removeSchool 
+	                    break;
+	                case 11:
+	                    System.out.println("Logging out from Admin Menu.");
+	                    return;
+	                default:
+	                    System.out.println("Invalid option. Please choose again.");
+	            }
+	        }
+	 }
+	
+	
+	
 }
-//	//================================= Option 1 View items (CRUD- Read) =================================
-//	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
-//		String output = "";
-//
-//		for (int i = 0; i < camcorderList.size(); i++) {
-//			if (camcorderList.get(i).getIsAvailable()) {
-//				output += String.format("%-10s %-30s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
-//					camcorderList.get(i).getDescription(), 
-//					ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable()),
-//					camcorderList.get(i).getDueDate(),camcorderList.get(i).getOpticalZoom());
-//			}
-//		}
-//		return output;
-//	}
-//	
-//	public static void viewAllCamcorder(ArrayList<Camcorder> camcorderList) {
-//		ResourceCentre.setHeader("CAMCORDER LIST");
-//		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
-//				"AVAILABLE", "DUE DATE","OPTICAL ZOOM");
-//		 output += retrieveAllCamcorder(camcorderList);	
-//		System.out.println(output);
-//	}
-//
-//	public static String retrieveAllChromebook(ArrayList<Chromebook> chromebookList) {
-//		String output = "";
-//		// write your code here
-//		return output;
-//	}
-//	public static void viewAllChromebook(ArrayList<Chromebook> chromebookList) {
-//		// write your code here
-//		String output = retrieveAllChromebook(chromebookList);
-//		System.out.println(output);
-//	}
-//
-//	//================================= Option 2 Add an item (CRUD - Create) =================================
-//	public static Camcorder inputCamcorder() {
-//		String tag = Helper.readString("Enter asset tag > ");
-//		String description = Helper.readString("Enter description > ");
-//		int zoom = Helper.readInt("Enter optical zoom > ");
-//
-//		Camcorder cc= new Camcorder(tag, description, zoom);
-//		return cc;
-//		
-//	}
-//	public static void addCamcorder(ArrayList<Camcorder> camcorderList, Camcorder cc) {
-//		Camcorder item;
-//		for(int i = 0; i < camcorderList.size(); i++) {
-//			item = camcorderList.get(i);
-//			if (item.getAssetTag().equalsIgnoreCase(cc.getAssetTag()) )
-//				return;
-//		}
-//		if ((cc.getAssetTag().isEmpty()) || (cc.getDescription().isEmpty()) ) {
-//			return;
-//		}
-//		
-//		camcorderList.add(cc);
-//	}
-//	
-//	public static Chromebook inputChromebook() {	
-//		Chromebook cb =null;
-//		// write your code here
-//
-//		return cb;
-//		
-//	}	
-//	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
-//		// write your code here
-//		Chromebook item;
-//		for(int i = 0; i < chromebookList.size(); i++) {
-//			item = chromebookList.get(i);
-//			if (item.getAssetTag().equalsIgnoreCase(cb.getAssetTag()) )
-//				return;
-//		}
-//		if ((cb.getAssetTag().isEmpty()) || (cb.getDescription().isEmpty()) ) {
-//			return;
-//		}
-//	}
-//	
-//	//================================= Option 3 Loan an item (CRUD - Update) =================================
-//	public static boolean doLoanCamcorder(ArrayList<Camcorder> camcorderList, String tag, String dueDate) {
-//		
-//		boolean isLoaned = false;
-//
-//		if (tag.isEmpty() || dueDate.isEmpty())
-//			return false;
-//		
-//		for (int i = 0; i < camcorderList.size(); i++) {
-//			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
-//					&& camcorderList.get(i).getIsAvailable() == true) {
-//				
-//				camcorderList.get(i).setIsAvailable(false);
-//				camcorderList.get(i).setDueDate(dueDate);
-//				
-//				isLoaned = true;
-//			}
-//		}
-//		return isLoaned;
-//	}
-//	public static void loanCamcorder(ArrayList<Camcorder> camcorderList) {
-//		ResourceCentre.viewAllCamcorder(camcorderList);
-//		String tag = Helper.readString("Enter asset tag > ");
-//		String due = Helper.readString("Enter due date > ");
-//		Boolean isLoaned =doLoanCamcorder(camcorderList, tag, due);
-//		if (isLoaned == false) {
-//			System.out.println("Invalid asset tag");
-//		} else {
-//			System.out.println("Camcorder " + tag + " loaned out");
-//		}
-//	}
-//	
-//	public static boolean doLoanChromebook(ArrayList<Chromebook> chromebookList, String tag, String dueDate) {
-//		// write your code here
-//		return true;
-//	}
-//	public static void loanChromebook(ArrayList<Chromebook> chromebookList) {
-//		// write your code here		
-//	}
-//	
-//	//================================= Option 4 Return an item (CRUD - Update)=================================
-//	public static boolean doReturnCamcorder(ArrayList<Camcorder> camcorderList,String tag) {
-//		boolean isReturned = false;
-//
-//		if (tag.isEmpty())
-//			return false;
-//		
-//		for (int i = 0; i < camcorderList.size(); i++) {
-//			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
-//					&& camcorderList.get(i).getIsAvailable() == false) {
-//				camcorderList.get(i).setIsAvailable(true);
-//				camcorderList.get(i).setDueDate("");
-//				isReturned = true;
-//				
-//			}
-//		}
-//		return isReturned;
-//		
-//	}
-//	public static void returnCamcorder(ArrayList<Camcorder> camcorderList) {
-//		ResourceCentre.viewAllCamcorder(camcorderList);
-//		String tag = Helper.readString("Enter asset tag > ");
-//		Boolean isReturned = doReturnCamcorder(camcorderList, tag);
-//		
-//		if (isReturned == false) {
-//			System.out.println("Invalid asset tag");
-//		} else {
-//			System.out.println("Camcorder " + tag + " returned");
-//		}
-//	}
-//
-//	public static boolean doReturnChromebook(ArrayList<Chromebook> chromebookList,String tag){
-//		boolean isReturned = false;
-//		// write your code here
-//		return isReturned;
-//	}
-//	public static void returnChromebook(ArrayList<Chromebook> chromebookList) {
-//		// write your code here
-//	}
-//
-//}
