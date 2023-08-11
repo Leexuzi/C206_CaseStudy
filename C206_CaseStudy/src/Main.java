@@ -84,12 +84,70 @@ public class Main {
 	    output += retrieveAllVendors(vendorList);
 	    System.out.println(output);
 	}
+	
+	public static void viewAllMenus(ArrayList<MenuItem> menuItemsList) {
+		setHeader("VIEW ITEMS");
+	    for(MenuItem item:menuItemsList) {
+	    	item.toString();
+	    }
+	}
 
+	public static void addMenuItem(ArrayList<MenuItem> menuItemsList) {
+		setHeader("ADD ITEM");
+		String name = Helper.readString("Enter school name: ");
+		int quantity = Helper.readInt("Enter quantity: ");
+		MenuItem newItem = new MenuItem(name, quantity);
+		menuItemsList.add(newItem);
+	}
+	
+	public static void removeMenuItem(ArrayList<MenuItem> menuItemsList) {
+		setHeader("REMOVE ITEM");
+		String name = Helper.readString("Enter item name: ");
+		for(int i = 1; i<menuItemsList.size(); i++) {
+			if(menuItemsList.get(i).getFood()==name) {
+				menuItemsList.remove(i);
+			}
+		}
+	}
+	
 	public static void viewAllOrders(ArrayList<Order> orderList) {
 	    setHeader("ORDER LIST");
-	    String output = String.format("%-20s %-20s\n", "PARENT", "ITEM");
-	    output += retrieveAllOrders(orderList);
-	    System.out.println(output);
+	    for(Order order:orderList) {
+	    	order.toString();
+	    }
+	}
+	
+	public static void orderItem(ArrayList<MenuItem> menuItemsList, ArrayList<Order> ordersList, ArrayList<Parent> parentsList) {
+		setHeader("PLACE ORDER");
+		String username = Helper.readString("Enter your username: ");
+		Parent parent = null;
+		for(Parent searchParent:parentsList) {
+			if(searchParent.getUsername()==username) {
+				parent = searchParent;
+			}
+		}
+		String itemName = Helper.readString("Enter item name: ");
+		MenuItem item = null;
+		for(MenuItem searchItem:menuItemsList) {
+			if(searchItem.getFood()==itemName) {
+				item = searchItem;
+			}
+		}
+		String name = Helper.readString("Enter order name: ");
+		ArrayList<MenuItem> orderedItems = new ArrayList<>();
+		orderedItems.add(item);
+		Order order = new Order(parent, orderedItems, name);
+		ordersList.add(order);
+	}
+	
+	public static void cancelOrder(ArrayList<Order> ordersList) {
+		setHeader("CANCEL ORDER");
+		String name = Helper.readString("Enter order name: ");
+		for(int i = 1; i<ordersList.size(); i++) {
+			if(ordersList.get(i).getOrderName()==name) {
+				ordersList.remove(i);
+			}
+		}
 	}
 	
 	public static void viewAllPayments(ArrayList<String> paymentsList) {
@@ -104,9 +162,11 @@ public class Main {
 		String name = Helper.readString("Enter school name: ");
 		int id = schoolsList.size();
 		School newSchool = new School(name, id);
+		schoolsList.add(newSchool);
 	}
 	
 	public static void removeSchool(ArrayList<School> schoolsList) {
+		setHeader("REMOVE SCHOOL");
 		String name = Helper.readString("Enter school name: ");
 		for(int i = 1; i<schoolsList.size(); i++) {
 			if(schoolsList.get(i).getName()==name) {
@@ -122,6 +182,7 @@ public class Main {
 	}
 	
 	public static void removePayment(ArrayList<String> paymentsList) {
+		setHeader("REMOVE PAYMENT");
 		String payment = Helper.readString("Enter payment method: ");
 		for(int i = 1; i<paymentsList.size(); i++) {
 			if(paymentsList.get(i)==payment) {
@@ -222,7 +283,7 @@ public class Main {
                     viewAllMenus(menuItemsList);
                     break;
                 case 2:
-                    orderItem(menuItemsList, ordersList);
+                    orderItem(menuItemsList, ordersList, parentsList);
                     break;
                 case 3:
                     viewAllOrders(ordersList);
@@ -259,10 +320,10 @@ public class Main {
                     viewAllMenus(menuItemsList);
                     break;
                 case 2:
-                    addItem(ordersList);
+                    addMenuItem(menuItemsList);
                     break;
                 case 3:
-                    removeItem(ordersList);
+                    removeMenuItem(menuItemsList);
                     break;
                 case 4:
                     viewAllOrders(ordersList);
