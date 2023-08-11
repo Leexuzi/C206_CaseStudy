@@ -20,7 +20,7 @@ public class C206_CaseStudy {
 		adminsList.add(new Admin("waynerei", "Password1234"));
 		parentsList.add(new Parent("mother", "Password1234", "Credit Billing"));
 		vendorsList.add(new Vendor("vendor", "Password1234", "11111111", "address"));
-		ordersList.add(new Order(parentsList.get(0, "Ramen"));
+		ordersList.add(new Order(parentsList.get(0), "Ramen"));
 		
 		int option = 0;
 
