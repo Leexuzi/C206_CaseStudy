@@ -3,8 +3,10 @@ import java.util.ArrayList;
 public class C206_CaseStudy {
 
 	public static void main(String[] args) {
+		
+		
 
-		ArrayList<Camcorder> camcorderList = new ArrayList<Camcorder>();
+		ArrayList<Admin> camcorderList = new ArrayList<Camcorder>();
 		ArrayList<Chromebook> chromebookList = new ArrayList<Chromebook>();
 
 		camcorderList.add(new Camcorder("CC001", "Sony HDR-CX405", 35));

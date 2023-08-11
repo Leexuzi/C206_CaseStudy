@@ -35,3 +35,4 @@ public class Vendor extends User {
                "\nContact: " + contactInfo + "\nAddress: " + address;
     }
 }
+
