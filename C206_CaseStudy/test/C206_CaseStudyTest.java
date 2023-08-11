@@ -7,16 +7,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudy {
+
+	private Menu m1;
+	private Menu m2;
+
 	private MenuItem m1;
 	private MenuItem m2;
-<<<<<<< HEAD
 
-=======
+
 	private User u1;
 	private User u2;
->>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
 	
-	private ArrayList<MenuItem> menuList;
+	private ArrayList<Menu> menuList;
 	private ArrayList<User> userList;
 	
 	public C206_CaseStudy() {
@@ -108,7 +110,7 @@ public class C206_CaseStudy {
 		ResourceCentre.addMenu(menuItem, m2);
 		assertEquals("Test that menuItem size is 2", 2, menuItem.size());
 		
-		//test if the expected output string same as the list of menuItems retrieved from the SourceCentre	
+		//test if the expected output string same as the list of me retrieved from the SourceCentre	
 		allMenu= ResourceCentre.retrieveAllMenu(menuItem);
 		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","", "Taco", "", "", "2");
 		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","", "Ramen", "", "", "3" );
