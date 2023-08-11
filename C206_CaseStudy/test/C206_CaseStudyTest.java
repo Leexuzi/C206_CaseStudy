@@ -9,19 +9,8 @@ import org.junit.Test;
 public class C206_CaseStudy {
 	private MenuItem m1;
 	private MenuItem m2;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 	private User u1;
 	private User u2;
->>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
-=======
-
-	private User u1;
-	private User u2;
-
->>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
 	
 	private ArrayList<MenuItem> menuList;
 	private ArrayList<User> userList;
