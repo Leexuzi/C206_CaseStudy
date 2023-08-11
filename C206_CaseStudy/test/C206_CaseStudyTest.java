@@ -22,8 +22,8 @@ public class C206_CaseStudyTest {
 	@Before
 	public void setUp() throws Exception {
 		// prepare test data
-		cc1 = new Camcorder("CC0011", "Nikon HDSLR", 40);
-		cc2 = new Camcorder("CC0012", "Sony DSC-RX100M7", 20);
+		m1 = new Menu("Taco", 2);
+		m2 = new Menu("Ramen", 3);
 		cb1 = new Chromebook("CB0011", "My Google Chromebook 1st", "Mac OS");
 		cb2 = new Chromebook("CB0012", "SAMSUNG Chromebook 4+", "Win 10");
 
