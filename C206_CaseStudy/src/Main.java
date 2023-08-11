@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Sample code for demonstrating interactions
-        ArrayList<MenuItem> menusList = new ArrayList<>();
+        ArrayList<MenuItem> menuItemsList = new ArrayList<>();
         ArrayList<User> usersList = new ArrayList<>();
         ArrayList<School> schoolsList = new ArrayList<>();
         ArrayList<Admin> adminsList = new ArrayList<>();
@@ -15,7 +15,7 @@ public class Main {
 
         // Additional interactions can be added here
 
-		menusList.add(new MenuItem("Taco", 2));
+		menuItemsList.add(new MenuItem("Taco", 2));
 		usersList.add(new User("ashhhlolol", "Password1234"));
 		schoolsList.add(new School("Republic Poly", 4));
 		adminsList.add(new Admin("waynerei", "Password1234"));
@@ -32,13 +32,13 @@ public class Main {
 
 			if (option == 1) {
 				// View all items
-				Main.viewAllUser(UserList);
-				Main.viewAllMenuItem(MenuItemList);
-				Main.viewAllSchool(SchoolList);
-				Main.viewAlParents(ParentList);
-				Main.viewAllOrder(OrderList);
-				Main.viewAllVendor(VendorList);
-				Main.viewAllAdmin(AdminList);
+				Main.viewAllUser(usersList);
+				Main.viewAllMenuItem(menuItemsList);
+				Main.viewAllSchool(schoolsList);
+				Main.viewAlParents(parentsList);
+				Main.viewAllOrder(ordersList);
+				Main.viewAllVendor(vendorsList);
+				Main.viewAllAdmin(adminsList);
 				//Ashley
 				
 			} else if (option == 2) {
@@ -331,6 +331,7 @@ public class Main {
 		// write your code here
 	}
 
+<<<<<<< HEAD
 
 }
 =======
@@ -661,7 +662,4 @@ public class Main {
 
 
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
