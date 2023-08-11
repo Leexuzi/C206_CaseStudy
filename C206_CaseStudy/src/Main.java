@@ -169,6 +169,74 @@ public class Main {
 
 
 	//================================= Option 1 View all Users =================================
+	
+	
+	
+	public static int signin(ArrayList<User> usersList) {
+	    setHeader("SIGN IN");
+	    
+	    String username = Helper.readString("Enter a username: ");
+	    String password = Helper.readString("Enter a password: ");
+	    int userType = Helper.readInt("Enter user type [0 for user, 1 for parent, 2 for vendor, 3 for admin]: ");
+	    
+	    // Check if the username is already taken or not
+	    for (User user : usersList) {
+	        if (user.getUsername().equals(username)) {
+	            System.out.println("Username already taken. Sign up failed.");
+	            return 0;
+	        }
+	    }
+	    
+	    // Create a new user based on the user type
+	    User newUser;
+	    if (userType == 1) {
+	        String paymentMethod = Helper.readString("Enter preferred payment method: ");
+	        newUser = new Parent(username, password, paymentMethod);
+	    } else if (userType == 2) {
+	        String contactInfo = Helper.readString("Enter contact info: ");
+	        String address = Helper.readString("Enter address: ");
+	        newUser = new Vendor(username, password, contactInfo, address);
+	    } else if (userType == 3) {
+	        newUser = new Admin(username, password);
+	    } else {
+	        newUser = new User(username, password);
+	    }
+	    
+	    usersList.add(newUser);
+	    System.out.println("Sign up successful.");
+	    return 1;
+	}
+	
+
+	public static int login(ArrayList<User> usersList) {
+	    setHeader("LOG IN");
+	    
+	    String username = Helper.readString("Enter your username: ");
+	    String password = Helper.readString("Enter your password: ");
+	    
+	    for (User user : usersList) {
+	        if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+	            if (user instanceof Parent) {
+	                return 1; // Return 1 for parent
+	            } else if (user instanceof Vendor) {
+	                return 2; // Return 2 for vendor
+	            } else if (user instanceof Admin) {
+	                return 3; // Return 3 for admin
+	            } else {
+	                return 0; // Return 0 for user
+	            }
+	        }
+	    }
+	    
+	    System.out.println("Invalid username or password. Login failed.");
+	    return -1; // Return -1 to indicate failure
+	}
+
+	
+	
+	
+	
+	
 	public static void option1View() {
 	    int option = 0;
 
@@ -211,4 +279,143 @@ public class Main {
 	        }
 	    }
 	}
+	
+	
+	
+	public static void parentMenu(ArrayList<Parent> parentsList, ArrayList<MenuItem> menuItemsList, ArrayList<Order> ordersList) {
+        int option = 0;
+
+        while (option != 5) {
+            setHeader("ORDER PAGE");
+            System.out.println("1. See all menus");
+            System.out.println("2. Order item");
+            System.out.println("3. See orders");
+            System.out.println("4. Cancel order");
+            System.out.println("5. Logout");
+            Helper.line(80, "-");
+
+            option = Helper.readInt("Enter an option > ");
+
+            switch (option) {
+                case 1:
+                    viewAllMenus(menuItemsList);
+                    break;
+                case 2:
+                    // Order Item
+                    break;
+                case 3:
+                    viewAllOrders(ordersList);
+                    break;
+                case 4:
+                    // Cancel order
+                    break;
+                case 5:
+                    System.out.println("Logging out from Parent Menu.");
+                    return;
+                default:
+                    System.out.println("Invalid option. Please choose again.");
+            }
+        }
+    }
+	
+	
+	public static void vendorMenu(ArrayList<Vendor> vendorsList, ArrayList<MenuItem> menuItemsList, ArrayList<Order> ordersList) {
+        int option = 0;
+
+        while (option != 6) {
+            setHeader("MANAGE LUNCHES");
+            System.out.println("1. See all items");
+            System.out.println("2. Add item");
+            System.out.println("3. Remove item");
+            System.out.println("4. See orders");
+            System.out.println("5. Logout");
+            Helper.line(80, "-");
+
+            option = Helper.readInt("Enter an option > ");
+
+            switch (option) {
+                case 1:
+                    viewAllMenus(menuItemsList);
+                    break;
+                case 2:
+                    // Add item
+                    break;
+                case 3:
+                    // Remove item
+                    break;
+                case 4:
+                    viewAllOrders(ordersList);
+                    break;
+                case 5:
+                    System.out.println("Logging out from Vendor Menu.");
+                    return;
+                default:
+                    System.out.println("Invalid option. Please choose again.");
+            }
+        }
+    }
+	
+	
+	 public static void adminMenu(ArrayList<User> usersList, ArrayList<Vendor> vendorsList, ArrayList<Order> ordersList) {
+	        int option = 0;
+
+	        while (option != 11) {
+	            setHeader("MANAGEMENT");
+	            System.out.println("1. See all users");
+	            System.out.println("2. See all vendors");
+	            System.out.println("3. See all orders");
+	            System.out.println("4. See all payments");
+	            System.out.println("5. Add vendor");
+	            System.out.println("6. Edit vendor");
+	            System.out.println("7. Remove vendors");
+	            System.out.println("8. Add school");
+	            System.out.println("9. Edit school");
+	            System.out.println("10. Remove school");
+	            System.out.println("11. Logout");
+	            Helper.line(80, "-");
+
+	            option = Helper.readInt("Enter an option > ");
+
+	            switch (option) {
+	                case 1:
+	                    viewAllUsers(usersList);
+	                    break;
+	                case 2:
+	                    viewAllVendors(vendorsList);
+	                    break;
+	                case 3:
+	                    viewAllOrders(ordersList);
+	                    break;
+	                case 4:
+	                    // viewAllPayments
+	                    break;
+	                case 5:
+	                    //  addVendor 
+	                    break;
+	                case 6:
+	                    //  editVendor 
+	                    break;
+	                case 7:
+	                    //  removeVendors 
+	                    break;
+	                case 8:
+	                    //  addSchool 
+	                    break;
+	                case 9:
+	                    //  editSchool 
+	                    break;
+	                case 10:
+	                    //  removeSchool 
+	                    break;
+	                case 11:
+	                    System.out.println("Logging out from Admin Menu.");
+	                    return;
+	                default:
+	                    System.out.println("Invalid option. Please choose again.");
+	            }
+	        }
+	 }
+	
+	
+	
 }
