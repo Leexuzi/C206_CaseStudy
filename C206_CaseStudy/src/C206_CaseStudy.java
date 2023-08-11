@@ -33,9 +33,15 @@ public class C206_CaseStudy {
 
 			if (option == 1) {
 				// View all items
-				C206_CaseStudy.viewAllCamcorder(camcorderList);
-				C206_CaseStudy.viewAllChromebook(chromebookList);
-
+				C206_CaseStudy.viewAllUser(UserList);
+				C206_CaseStudy.viewAllMenuItem(MenuItemList);
+				C206_CaseStudy.viewAllSchool(SchoolList);
+				C206_CaseStudy.viewAlParents(ParentList);
+				C206_CaseStudy.viewAllOrder(OrderList);
+				C206_CaseStudy.viewAllVendor(VendorList);
+				C206_CaseStudy.viewAllAdmin(AdminList);
+				//Ashley
+				
 			} else if (option == 2) {
 				// Add a new item
 				ResourceCentre.setHeader("ADD");			
