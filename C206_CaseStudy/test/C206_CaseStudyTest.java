@@ -13,11 +13,13 @@ public class C206_CaseStudy {
 =======
 	private MenuItem m1;
 	private MenuItem m2;
+<<<<<<< HEAD
 >>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
 
+=======
+>>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
 	private User u1;
 	private User u2;
-
 	
 	private ArrayList<Menu> menuList;
 	private ArrayList<User> userList;
