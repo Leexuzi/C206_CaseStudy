@@ -7,7 +7,7 @@ public class Order {
     private boolean isPaid;
     private boolean isDelivered;
 
-    public Order(Parent parent) {
+    public Order(Parent parent, String item) {
         this.parent = parent;
         this.items = new ArrayList<>();
         this.isPaid = false;
