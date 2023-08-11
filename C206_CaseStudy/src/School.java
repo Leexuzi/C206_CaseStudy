@@ -11,15 +11,15 @@ public class School {
         return name;
     }
 
-    public int getSchoolID() {
-        return schoolID;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setSchoolID(int schoolID) { // Specify int data type for parameter
+    public int getSchoolID() {
+        return schoolID;
+    }
+
+    public void setSchoolID(int schoolID) {
         this.schoolID = schoolID;
     }
 }
