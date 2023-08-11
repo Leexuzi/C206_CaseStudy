@@ -25,7 +25,7 @@ public class Main {
 		
 		int option = 0;
 
-		while (option != 5) {
+		while (option != 3) {
 
 			Main.mainMenu();
 			option = Helper.readInt("Enter an option > ");
@@ -122,8 +122,9 @@ public class Main {
     
     public static void mainMenu() {
 		Main.setHeader("SCHOOL LUNCH BOX ORDERING SYSTEM");
-		System.out.println("1. Sign in");
+		System.out.println("1. Sign up");
 		System.out.println("2. Log in");
+		System.out.println("3. Exit");
 		Helper.line(80, "-");
 	}
 
@@ -189,6 +190,31 @@ public class Main {
 	//log in option
 	public static void login() {
 		
+	}
+	
+	if(user is parent) {
+		Main.parentMenu();
+		
+		int option = 0;
+		while (option != 5){
+			
+		}
+	}
+	else if(user is vendor) {
+		Main.vendorMenu();
+		
+		int option = 0;
+		while (option != 6){
+			
+		}
+	}
+	else if(user is admin) {
+		Main.adminMenu();
+		
+		int option = 0;
+		while (option != 11){
+			
+		}
 	}
 }
 
