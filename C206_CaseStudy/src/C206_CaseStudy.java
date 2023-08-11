@@ -19,10 +19,10 @@ public class C206_CaseStudy {
 		menusList.add(new MenuItem("Taco", 2));
 		userList.add(new User("ashhhlolol", "Password1234"));
 		schoolList.add(new School("Republic Poly", 4));
-		adminsList.add(new Chromebook("waynerei", "Password1234"));
-		parentList.add(new Chromebook("mother", "Password1234"));
-		vendorList.add(new Chromebook("vendor", "Password1234"));
-		orderList.add(new Chromebook("Mother", "Ramen", true , true));
+		adminsList.add(new Admin("waynerei", "Password1234"));
+		parentList.add(new Parent("mother", "Password1234"));
+		vendorList.add(new Vendor("vendor", "Password1234"));
+		orderList.add(new Order("Mother", "Ramen", true , true));
 		
 		int option = 0;
 
