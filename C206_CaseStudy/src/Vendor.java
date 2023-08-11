@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 public class Vendor extends User {
 
@@ -114,3 +115,5 @@ public class Vendor extends User {
     }
 }
 
+=======
+>>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git

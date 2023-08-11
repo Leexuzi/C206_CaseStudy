@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 public class Parent {
 	private String assetTag;
 	private String description;
@@ -34,6 +35,22 @@ public class Parent {
 
 	public void setIsAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
+=======
+public class Parent extends User{
+	private String paymentPreferred;
+
+	public Parent(String username, String password, String paymentPreferred) {
+		super(username, password);
+		this.paymentPreferred = paymentPreferred;
+	}
+	
+	public String getPaymentMethod() {
+		return paymentPreferred;
+	}
+	
+	public void setPaymentMethod(String paymentPreferred) {
+		this.paymentPreferred = paymentPreferred;
+>>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
 	}
 }
 
