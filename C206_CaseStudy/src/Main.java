@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 
 public class Main {
@@ -654,4 +654,4 @@ public class Main {
 
 
 }
->>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
+
