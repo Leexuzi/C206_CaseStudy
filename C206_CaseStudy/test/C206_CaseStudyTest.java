@@ -12,8 +12,6 @@ public class C206_CaseStudyTest {
     private User u1;
     private School s1;
     private Order o1;
-    private Parent p1;
-    private Admin a1;
     private Vendor v1;
     private PaymentMethod pm1;
     
