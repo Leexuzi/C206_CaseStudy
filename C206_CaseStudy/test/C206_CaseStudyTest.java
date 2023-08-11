@@ -7,8 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudy {
-	private Menu m1;
-	private Menu m2;
+	private MenuItem m1;
+	private MenuItem m2;
 <<<<<<< HEAD
 
 =======
@@ -16,7 +16,7 @@ public class C206_CaseStudy {
 	private User u2;
 >>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
 	
-	private ArrayList<Menu> menuList;
+	private ArrayList<MenuItem> menuList;
 	private ArrayList<User> userList;
 	
 	public C206_CaseStudy() {
