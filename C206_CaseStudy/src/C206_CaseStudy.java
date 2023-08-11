@@ -124,10 +124,15 @@ public class C206_CaseStudy {
 		C206_CaseStudy.setHeader("MANAGEMENT");
 		System.out.println("1. See all users");
 		System.out.println("2. See all vendors");
-		System.out.println("3. Add vendor");
-		System.out.println("4. ");
-		System.out.println("5. See orders");
-		System.out.println("6. Logout");
+		System.out.println("3. See all orders");
+		System.out.println("4. See all payments");
+		System.out.println("5. Add vendor");
+		System.out.println("6. Edit vendor");
+		System.out.println("7. Remove vendors");
+		System.out.println("8. Add school");
+		System.out.println("9. Edit school");
+		System.out.println("10. Remove school");
+		System.out.println(". Logout");
 		Helper.line(80, "-");
 	}
 	
