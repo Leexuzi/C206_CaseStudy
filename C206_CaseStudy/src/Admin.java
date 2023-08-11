@@ -1,11 +1,17 @@
+public class Admin extends User {
+    public Admin(String username, String password) {
+        super(username, password);
+    }
 
-public class Admin extends User{
-	
-	private String aSDF;
+    public void createSchool(String schoolName, int schoolID) {
+        // Create a new school
+    }
 
-	public Admin(String username, String password, String aSDF) {
-		super(username, password);
-		this.aSDF = aSDF;
-	}
+    public void manageUserAccounts(User user) {
+        // Manage user accounts
+    }
 
+    public void generateReports() {
+        // Generate reports
+    }
 }
