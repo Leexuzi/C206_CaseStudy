@@ -23,4 +23,3 @@ public class School {
         this.schoolID = schoolID;
     }
 }
-// Wayne

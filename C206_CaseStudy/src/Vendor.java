@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Vendor extends User {
     private String contactInfo;
     private String address;
