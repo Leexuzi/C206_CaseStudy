@@ -28,13 +28,29 @@ public class Main {
 		while (option != 3) {
 
 			Main.mainMenu();
-			option = Helper.readInt("Enter an option > ");
-
-			if(option == 1) {
-				Main.signin();
+			if(user is parent) {
+				Main.parentMenu();
+				
+				int option = 0;
+				while (option != 5){
+					
+				}
 			}
-			else {
-				Main.login();
+			else if(user is vendor) {
+				Main.vendorMenu();
+				
+				int option = 0;
+				while (option != 6){
+					
+				}
+			}
+			else if(user is admin) {
+				Main.adminMenu();
+				
+				int option = 0;
+				while (option != 11){
+					
+				}
 			}
 		}
     }
@@ -122,9 +138,8 @@ public class Main {
     
     public static void mainMenu() {
 		Main.setHeader("SCHOOL LUNCH BOX ORDERING SYSTEM");
-		System.out.println("1. Sign up");
+		System.out.println("1. Sign in");
 		System.out.println("2. Log in");
-		System.out.println("3. Exit");
 		Helper.line(80, "-");
 	}
 
@@ -192,32 +207,96 @@ public class Main {
 		
 	}
 	
-	if(user is parent) {
-		Main.parentMenu();
-		
-		int option = 0;
-		while (option != 5){
-			
-		}
+	public static void viewAllUsers(ArrayList<User> userList) {
+	    setHeader("USER LIST");
+	    String output = String.format("%-20s %-20s\n", "USERNAME", "PASSWORD");
+	    output += retrieveAllUsers(userList);
+	    System.out.println(output);
 	}
-	else if(user is vendor) {
-		Main.vendorMenu();
-		
-		int option = 0;
-		while (option != 6){
-			
-		}
-	}
-	else if(user is admin) {
-		Main.adminMenu();
-		
-		int option = 0;
-		while (option != 11){
-			
-		}
-	}
-}
 
+	public static void viewAllSchools(ArrayList<School> schoolList) {
+	    setHeader("SCHOOL LIST");
+	    String output = String.format("%-30s %-10s\n", "SCHOOL NAME", "TIER");
+	    output += retrieveAllSchools(schoolList);
+	    System.out.println(output);
+	}
+
+	public static void viewAllAdmins(ArrayList<Admin> adminList) {
+	    setHeader("ADMIN LIST");
+	    String output = String.format("%-20s %-20s\n", "USERNAME", "PASSWORD");
+	    output += retrieveAllAdmins(adminList);
+	    System.out.println(output);
+	}
+	
+	public static void viewAllParents(ArrayList<Parent> parentList) {
+	    setHeader("PARENT LIST");
+	    String output = String.format("%-20s %-20s %-20s\n", "USERNAME", "PASSWORD", "PAYMENT METHOD");
+	    output += retrieveAllParents(parentList);
+	    System.out.println(output);
+	}
+
+	public static void viewAllVendors(ArrayList<Vendor> vendorList) {
+	    setHeader("VENDOR LIST");
+	    String output = String.format("%-20s %-20s %-20s %-20s\n", "USERNAME", "PASSWORD", "CONTACT", "ADDRESS");
+	    output += retrieveAllVendors(vendorList);
+	    System.out.println(output);
+	}
+
+	public static void viewAllOrders(ArrayList<Order> orderList) {
+	    setHeader("ORDER LIST");
+	    String output = String.format("%-20s %-20s\n", "PARENT", "ITEM");
+	    output += retrieveAllOrders(orderList);
+	    System.out.println(output);
+	}
+
+
+	//================================= Option 1 View all Users =================================
+	public static void option1View() {
+	    int option = 0;
+
+	    while (option != 7) {
+	        setHeader("VIEW");
+	        System.out.println("1. View all users");
+	        System.out.println("2. View all schools");
+	        System.out.println("3. View all admins");
+	        System.out.println("4. View all parents");
+	        System.out.println("5. View all vendors");
+	        System.out.println("6. View all orders");
+	        System.out.println("7. Back");
+	        Helper.line(80, "-");
+
+	        option = Helper.readInt("Enter an option > ");
+
+	        switch (option) {
+	            case 1:
+	                viewAllUsers(usersList);
+	                break;
+	            case 2:
+	                viewAllSchools(schoolsList);
+	                break;
+	            case 3:
+	                viewAllAdmins(adminsList);
+	                break;
+	            case 4:
+	                viewAllParents(parentsList);
+	                break;
+	            case 5:
+	                viewAllVendors(vendorsList);
+	                break;
+	            case 6:
+	                viewAllOrders(ordersList);
+	                break;
+	            case 7:
+	                return; // Exit the option
+	            default:
+	                System.out.println("Invalid option. Please choose again.");
+	        }
+	    }
+	}
+	
+	
+	
+}
 //	//================================= Option 1 View items (CRUD- Read) =================================
 //	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
 //		String output = "";
