@@ -8,7 +8,7 @@ public class Vendor extends User {
         super(username, password);
         this.contactInfo = contactInfo;
         this.address = address;
-        menus = new ArrayList<>();
+        menus = new ArrayList<MenuItem>();
     }
 
     // Getters and setters for contactInfo and address

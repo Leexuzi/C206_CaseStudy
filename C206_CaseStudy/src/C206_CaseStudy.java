@@ -4,14 +4,19 @@ public class C206_CaseStudy {
 
     public static void main(String[] args) {
         // Sample code for demonstrating interactions
-        ArrayList<Menu> menus = new ArrayList<>();
+        ArrayList<MenuItem> menus = new ArrayList<>();
         ArrayList<User> users = new ArrayList<>();
+        ArrayList<School> schools = new ArrayList<>();
+        ArrayList<Admin> admins = new ArrayList<>();
+        ArrayList<Parent> parents = new ArrayList<>();
+        ArrayList<Vendor> vendors = new ArrayList<>();
+        ArrayList<Order> orders = new ArrayList<>();
 
-        parent.placeOrder(menu, menuItem, 2);
+        parents.placeOrder(menu, menuItem, 2);
 
         // Additional interactions can be added here
 
-		camcorderList.add(new Camcorder("CC001", "Sony HDR-CX405", 35));
+		menusList.add(new MenuItem("CC001", "Sony HDR-CX405", 35));
 		camcorderList.add(new Camcorder("CC002", "Panasonic HC-MDH2", 10));
 		chromebookList.add(new Chromebook("CB001", "ASUS Chromebook ", "Win 10"));
 		chromebookList.add(new Chromebook("CB002", "HP Chromebook", "Win 10"));
@@ -20,13 +25,13 @@ public class C206_CaseStudy {
 
 		while (option != 5) {
 
-			ResourceCentre.menu();
+			C206_CaseStudy.menu();
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
 				// View all items
-				ResourceCentre.viewAllCamcorder(camcorderList);
-				ResourceCentre.viewAllChromebook(chromebookList);
+				C206_CaseStudy.viewAllCamcorder(camcorderList);
+				C206_CaseStudy.viewAllChromebook(chromebookList);
 
 			} else if (option == 2) {
 				// Add a new item

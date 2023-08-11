@@ -6,16 +6,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class C206_CaseStudyTest {
+public class C206_CaseStudy {
 	private Menu m1;
 	private Menu m2;
-	private  cb1;
-	private Chromebook cb2;
+	private User u1;
+	private User u2;
 	
-	private ArrayList<Camcorder> camcorderList;
-	private ArrayList<Chromebook> chromebookList;
+	private ArrayList<Menu> menuList;
+	private ArrayList<User> userList;
 	
-	public ResourceCentreTest() {
+	public C206_CaseStudy() {
 		super();
 	}
 	
