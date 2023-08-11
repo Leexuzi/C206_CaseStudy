@@ -23,19 +23,26 @@ public class Main {
 		ordersList.add(new Order(parentsList.get(0), "Ramen"));
 		
 		int option = 0;
+		int user = 0;
 
 		while (option != 3) {
 
+			//this is the log in sign up page
 			Main.mainMenu();
 			if(user is parent) {
+				
 				Main.parentMenu();
 				
 				int option = 0;
 				while (option != 5){
-					
+					 if(option 1) {
+						 see all menus;
+					 }
+					 
 				}
 			}
 			else if(user is vendor) {
+				
 				Main.vendorMenu();
 				
 				int option = 0;
@@ -44,6 +51,7 @@ public class Main {
 				}
 			}
 			else if(user is admin) {
+				
 				Main.adminMenu();
 				
 				int option = 0;
@@ -198,12 +206,13 @@ public class Main {
     }
 	
 	//sign up option
-	public static void signin() {
+	public static int signin() {
+		setHeader("SIGN IN");
 		
 	}
 	
 	//log in option
-	public static void login() {
+	public static int login() {
 		
 	}
 	
