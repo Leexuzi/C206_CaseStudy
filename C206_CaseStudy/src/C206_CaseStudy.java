@@ -95,17 +95,15 @@ public class C206_CaseStudy {
 			}
 
 		}
-
->>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
 	}
 
-	public static void menu() {
-		ResourceCentre.setHeader("RESOURCE CENTRE APP");
-		System.out.println("1. Display Inventory");
-		System.out.println("2. Add item");
-		System.out.println("3. Loan item");
-		System.out.println("4. Return item");
-		System.out.println("5. Quit");
+	public static void parentMenu() {
+		ResourceCentre.setHeader("SCHOOL LUNCH BOX ORDERING");
+		System.out.println("1. See all menus");
+		System.out.println("2. Order item");
+		System.out.println("3. See orders");
+		System.out.println("4. Cancel order");
+		System.out.println("5. Logout");
 		Helper.line(80, "-");
 
 	}
