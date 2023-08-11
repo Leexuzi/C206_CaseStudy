@@ -11,20 +11,6 @@ public class School {
         return name;
     }
 
-<<<<<<< HEAD
-    public int getSchoolID() {
-        return schoolID;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSchoolID(int schoolID) { // Specify int data type for parameter
-        this.schoolID = schoolID;
-    }
-}
-=======
     public void setName(String name) {
         this.name = name;
     }
@@ -37,5 +23,3 @@ public class School {
         this.schoolID = schoolID;
     }
 }
-// Wayne
->>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
