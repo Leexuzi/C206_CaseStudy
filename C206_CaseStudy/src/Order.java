@@ -1,5 +1,5 @@
 
-public class Order extends Payment{
+public class Order extends Parent{
 	private String os;
 
 	public Order(String assetTag, String description, String os) {

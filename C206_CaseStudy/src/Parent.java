@@ -1,11 +1,11 @@
 
-public class Vendor {
+public class Parent {
 	private String assetTag;
 	private String description;
 	private String dueDate;
 	private boolean isAvailable;
 
-	public Vendor(String assetTag, String description) {
+	public Parent(String assetTag, String description) {
 		this.assetTag = assetTag;
 		this.description = description;
 		this.dueDate = "";
