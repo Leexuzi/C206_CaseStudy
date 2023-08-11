@@ -11,126 +11,52 @@ public class Main {
         ArrayList<Parent> parentsList = new ArrayList<>();
         ArrayList<Vendor> vendorsList = new ArrayList<>();
         ArrayList<Order> ordersList = new ArrayList<>();
+        ArrayList<String> paymentsList = new ArrayList<>();
 
-        // Additional interactions can be added here
 
-		menuItemsList.add(new MenuItem("Taco", 2));
-		usersList.add(new User("ashhhlolol", "Password1234"));
-		schoolsList.add(new School("Republic Poly", 4));
 		adminsList.add(new Admin("waynerei", "Password1234"));
 		parentsList.add(new Parent("mother", "Password1234", "Credit Billing"));
 		vendorsList.add(new Vendor("vendor", "Password1234", "11111111", "address"));
+		for(Admin admin : adminsList) {
+			usersList.add(admin);
+		}
+		for(Parent parent: parentsList) {
+			usersList.add(parent);
+		}
+		for(Vendor vendor : vendorsList) {
+			usersList.add(vendor);
+		}
+        
+		menuItemsList.add(new MenuItem("Taco", 2));
+		schoolsList.add(new School("Republic Poly", 4));
 		ordersList.add(new Order(parentsList.get(0), "Ramen"));
+		paymentsList.add("Credit card");
+		paymentsList.add("Paypal");
+		
 		
 		int option = 0;
 		int user = 0;
 		
-		option = Helper.readInt("a");
-		//if login was chosen
-		if(option == 2) {
-			int result = login();
+		if(option == 1) {
+			signup(usersList);
+		}
+		else if(option == 2) {
+			int result = login(usersList);
 			if(result == 1) {
-				int userOption = 0;
-				parentMenu();
-				while (userOption!=5) {
-					
-					option = Helper.readInt("a");
-
-					if(userOption == 1) {
-						System.out.println("1");
-					}
-				}
+				parentMenu(parentsList, menuItemsList, ordersList);
 			}
 			else if(result == 2) {
-//				vendorMenu();
+				vendorMenu(vendorsList, menuItemsList, ordersList);
 			}
 			else if(result == 3){
-//				adminMenu();
+				adminMenu(parentsList, vendorsList, ordersList);
 			}
 			else{
 				System.out.println("Login in failed");
 			}
 		}
-    }
     
-    public static void mainMenu() {
-		Main.setHeader("SCHOOL LUNCH BOX ORDERING SYSTEM");
-		System.out.println("1. Sign in");
-		System.out.println("2. Log in");
-		Helper.line(80, "-");
-	}
-
-	public static void parentMenu() {
-		Main.setHeader("ORDER PAGE");
-		System.out.println("1. See all menus");
-		System.out.println("2. Order item");
-		System.out.println("3. See orders");
-		System.out.println("4. Cancel order");
-		System.out.println("5. Logout");
-		Helper.line(80, "-");
-	}
-	
-	public static void vendorMenu() {
-		Main.setHeader("MANAGE LUNCHES");
-		System.out.println("1. See all items");
-		System.out.println("2. Add item");
-		System.out.println("3. Add item");
-		System.out.println("4. Remove item");
-		System.out.println("5. See orders");
-		System.out.println("6. Logout");
-		Helper.line(80, "-");
-	}
-	
-	public static void adminMenu() {
-		Main.setHeader("MANAGEMENT");
-		System.out.println("1. See all users");
-		System.out.println("2. See all vendors");
-		System.out.println("3. See all orders");
-		System.out.println("4. See all payments");
-		System.out.println("5. Add vendor");
-		System.out.println("6. Edit vendor");
-		System.out.println("7. Remove vendors");
-		System.out.println("8. Add school");
-		System.out.println("9. Edit school");
-		System.out.println("10. Remove school");
-		System.out.println("11. Logout");
-		Helper.line(80, "-");
-	}
-	
-	public static void setHeader(String header) {
-		Helper.line(80, "-");
-		System.out.println(header);
-		Helper.line(80, "-");
-	}
-
-	public static String showAvailability(boolean isAvailable) {
-		String avail;
-
-		if (isAvailable == true) {
-			avail = "Yes";
-		} else {
-			avail = "No";
-		}
-		return avail;
     }
-	
-	//sign up option
-	public static int signin() {
-		setHeader("SIGN IN");
-		
-	}
-	
-	//log in option
-	public static int login() {
-		
-	}
-	
-	public static void viewAllUsers(ArrayList<User> userList) {
-	    setHeader("USER LIST");
-	    String output = String.format("%-20s %-20s\n", "USERNAME", "PASSWORD");
-	    output += retrieveAllUsers(userList);
-	    System.out.println(output);
-	}
 
 	public static void viewAllSchools(ArrayList<School> schoolList) {
 	    setHeader("SCHOOL LIST");
@@ -166,14 +92,16 @@ public class Main {
 	    output += retrieveAllOrders(orderList);
 	    System.out.println(output);
 	}
-
-
-	//================================= Option 1 View all Users =================================
 	
+	public static void viewAllPayments(ArrayList<String> paymentsList) {
+	    setHeader("ORDER LIST");
+	    String output = String.format("%-20s %-20s\n", "PARENT", "ITEM");
+	    output += retrieveAllOrders(orderList);
+	    System.out.println(output);
+	}
 	
-	
-	public static int signin(ArrayList<User> usersList) {
-	    setHeader("SIGN IN");
+	public static int signup(ArrayList<User> usersList) {
+	    setHeader("SIGN UP");
 	    
 	    String username = Helper.readString("Enter a username: ");
 	    String password = Helper.readString("Enter a password: ");
@@ -209,6 +137,7 @@ public class Main {
 	
 
 	public static int login(ArrayList<User> usersList) {
+
 	    setHeader("LOG IN");
 	    
 	    String username = Helper.readString("Enter your username: ");
@@ -231,56 +160,19 @@ public class Main {
 	    System.out.println("Invalid username or password. Login failed.");
 	    return -1; // Return -1 to indicate failure
 	}
-
 	
-	
-	
-	
-	
-	public static void option1View() {
-	    int option = 0;
-
-	    while (option != 7) {
-	        setHeader("VIEW");
-	        System.out.println("1. View all users");
-	        System.out.println("2. View all schools");
-	        System.out.println("3. View all admins");
-	        System.out.println("4. View all parents");
-	        System.out.println("5. View all vendors");
-	        System.out.println("6. View all orders");
-	        System.out.println("7. Back");
-	        Helper.line(80, "-");
-
-	        option = Helper.readInt("Enter an option > ");
-
-	        switch (option) {
-	            case 1:
-	                viewAllUsers(usersList);
-	                break;
-	            case 2:
-	                viewAllSchools(schoolsList);
-	                break;
-	            case 3:
-	                viewAllAdmins(adminsList);
-	                break;
-	            case 4:
-	                viewAllParents(parentsList);
-	                break;
-	            case 5:
-	                viewAllVendors(vendorsList);
-	                break;
-	            case 6:
-	                viewAllOrders(ordersList);
-	                break;
-	            case 7:
-	                return; // Exit the option
-	            default:
-	                System.out.println("Invalid option. Please choose again.");
-	        }
-	    }
+	public static void setHeader(String header) {
+		Helper.line(80, "-");
+		System.out.println(header);
+		Helper.line(80, "-");
 	}
-	
-	
+    
+	public static void mainMenu() {
+		Main.setHeader("SCHOOL LUNCH BOX ORDERING SYSTEM");
+		System.out.println("1. Sign in");
+		System.out.println("2. Log in");
+		Helper.line(80, "-");
+	}
 	
 	public static void parentMenu(ArrayList<Parent> parentsList, ArrayList<MenuItem> menuItemsList, ArrayList<Order> ordersList) {
         int option = 0;
@@ -301,13 +193,13 @@ public class Main {
                     viewAllMenus(menuItemsList);
                     break;
                 case 2:
-                    // Order Item
+                    orderItem(menuItemsList, ordersList);
                     break;
                 case 3:
                     viewAllOrders(ordersList);
                     break;
                 case 4:
-                    // Cancel order
+                    cancelOrder(ordersList);
                     break;
                 case 5:
                     System.out.println("Logging out from Parent Menu.");
@@ -338,10 +230,10 @@ public class Main {
                     viewAllMenus(menuItemsList);
                     break;
                 case 2:
-                    // Add item
+                    addItem(ordersList);
                     break;
                 case 3:
-                    // Remove item
+                    removeItem(ordersList);
                     break;
                 case 4:
                     viewAllOrders(ordersList);
@@ -359,10 +251,11 @@ public class Main {
 	 public static void adminMenu(ArrayList<User> usersList, ArrayList<Vendor> vendorsList, ArrayList<Order> ordersList) {
 	        int option = 0;
 
-	        while (option != 11) {
+	        while (option != 14) {
 	            setHeader("MANAGEMENT");
-	            System.out.println("1. See all users");
+	            System.out.println("1. See all parents");
 	            System.out.println("2. See all vendors");
+	            System.out.println("2. See all schools");
 	            System.out.println("3. See all orders");
 	            System.out.println("4. See all payments");
 	            System.out.println("5. Add vendor");
@@ -371,14 +264,17 @@ public class Main {
 	            System.out.println("8. Add school");
 	            System.out.println("9. Edit school");
 	            System.out.println("10. Remove school");
-	            System.out.println("11. Logout");
+	            System.out.println("11. Add payment");
+	            System.out.println("12. Edit payment");
+	            System.out.println("13. Remove payment");	            
+	            System.out.println("14. Logout");
 	            Helper.line(80, "-");
 
 	            option = Helper.readInt("Enter an option > ");
 
 	            switch (option) {
 	                case 1:
-	                    viewAllUsers(usersList);
+	                    viewAllParents(parentsList);
 	                    break;
 	                case 2:
 	                    viewAllVendors(vendorsList);
@@ -387,27 +283,36 @@ public class Main {
 	                    viewAllOrders(ordersList);
 	                    break;
 	                case 4:
-	                    // viewAllPayments
+	                    viewAllPayments(paymentsList);
 	                    break;
 	                case 5:
-	                    //  addVendor 
+	                    addVendor(vendorsList);
 	                    break;
 	                case 6:
-	                    //  editVendor 
+	                    editVendor(vendorsList);
 	                    break;
 	                case 7:
-	                    //  removeVendors 
+	                    removeVendors(vendorsList);
 	                    break;
 	                case 8:
-	                    //  addSchool 
+	                    addSchool(schoolsList);
 	                    break;
 	                case 9:
-	                    //  editSchool 
+	                    editSchool(schoolsList);
 	                    break;
 	                case 10:
-	                    //  removeSchool 
+	                    removeSchool(schoolsList);
 	                    break;
 	                case 11:
+	                    addPayment(paymentsList);
+	                    break;
+	                case 12:
+	                    editPayment(paymentsList);
+	                    break;
+	                case 13:
+	                    removeSchool(paymentsList);
+	                    break;
+	                case 14:
 	                    System.out.println("Logging out from Admin Menu.");
 	                    return;
 	                default:
