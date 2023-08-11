@@ -1,11 +1,11 @@
 
 public class Admin extends User{
 	
-	private String ASDF;
+	private String aSDF;
 
-	public Admin(String username, String password) {
+	public Admin(String username, String password, String aSDF) {
 		super(username, password);
-		// TODO Auto-generated constructor stub
+		this.aSDF = aSDF;
 	}
 
 }
