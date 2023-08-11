@@ -1,13 +1,4 @@
 
-/**
- * @author 22000765
- *
- */
-public class User {
-//test
-}
-
-
 public class User {
 	private String username;
 	private String password;
