@@ -107,15 +107,27 @@ public class Main {
 	}
 	
 	public static void removeSchool(ArrayList<School> schoolsList) {
-		
+		String name = Helper.readString("Enter school name: ");
+		for(int i = 1; i<schoolsList.size(); i++) {
+			if(schoolsList.get(i).getName()==name) {
+				schoolsList.remove(i);
+			}
+		}
 	}
 	
 	public static void addPayment(ArrayList<String> paymentsList) {
-		
+		setHeader("ADD PAYMENT");
+		String payment = Helper.readString("Enter payment method: ");
+		paymentsList.add(payment);
 	}
 	
 	public static void removePayment(ArrayList<String> paymentsList) {
-		
+		String payment = Helper.readString("Enter payment method: ");
+		for(int i = 1; i<paymentsList.size(); i++) {
+			if(paymentsList.get(i)==payment) {
+				paymentsList.remove(i);
+			}
+		}
 	}
 	
 	public static int signup(ArrayList<User> usersList) {
