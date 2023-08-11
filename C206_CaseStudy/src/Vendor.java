@@ -1,6 +1,6 @@
 
-public class Menu extends Parent{
-private int opticalZoom;
+public class Vendor extends User{
+
 
 	public Menu(String assetTag, String description, int opticalZoom) {
 		super(assetTag, description);
