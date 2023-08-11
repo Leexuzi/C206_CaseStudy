@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Vendor extends User {
     private String contactInfo;
@@ -9,18 +10,19 @@ public class Vendor extends User {
         this.address = address;
     }
 
-    public void updateMenu(String food, String description, double price, int quantity) {
-        // Update logic here
+    public String getContactInfo() {
+        return contactInfo;
     }
 
-    public void deleteMenu(String food) {
-        // Delete logic here
+    public void setContactInfo(String contactInfo) {
+        this.contactInfo = contactInfo;
     }
 
-    @Override
-    public String toString() {
-        return super.getUsername() + "\nVendor: " + super.getUsername() +
-               "\nContact: " + contactInfo + "\nAddress: " + address;
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
-
