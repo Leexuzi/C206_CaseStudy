@@ -1,8 +1,8 @@
-public class Menu {
+public class MenuItem {
     private String food;
     private int quantity;
 
-    public Menu(String food, int quantity) {
+    public MenuItem(String food, int quantity) {
         this.food = food;
         this.quantity = quantity;
     }
