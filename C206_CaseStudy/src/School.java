@@ -14,7 +14,6 @@
  *
  */
 public class School {
-    
 	private String name;
 	private int schoolID;
 	
@@ -35,7 +34,7 @@ public class School {
 		this.name = name;
 	}
 	
-	public void setSchoolID(int schoolID) {
+	public void setSchoolID(schoolID) {
 		this.schoolID = schoolID;
 	}
 }//test
