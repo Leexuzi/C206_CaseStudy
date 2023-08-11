@@ -3,12 +3,7 @@ import java.util.ArrayList;
 public class aaaaaaaaaaaaaaaaaa {
 
 	public static void main(String[] args) {
-
-<<<<<<< HEAD
-//testtesttest
-		// testmore
-		//test
-=======
+		
 		ArrayList<Camcorder> camcorderList = new ArrayList<Camcorder>();
 		ArrayList<Chromebook> chromebookList = new ArrayList<Chromebook>();
 
