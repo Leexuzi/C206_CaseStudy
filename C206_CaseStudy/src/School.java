@@ -11,6 +11,7 @@ public class School {
         return name;
     }
 
+<<<<<<< HEAD
     public int getSchoolID() {
         return schoolID;
     }
@@ -23,6 +24,8 @@ public class School {
         this.schoolID = schoolID;
     }
 }
+=======
+>>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
     public void setName(String name) {
         this.name = name;
     }
@@ -35,5 +38,8 @@ public class School {
         this.schoolID = schoolID;
     }
 }
+<<<<<<< HEAD
 // Wayne
 
+=======
+>>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
