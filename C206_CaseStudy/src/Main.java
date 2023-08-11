@@ -13,7 +13,6 @@ public class Main {
         ArrayList<Order> ordersList = new ArrayList<>();
         ArrayList<String> paymentsList = new ArrayList<>();
 
-
 		adminsList.add(new Admin("waynerei", "Password1234"));
 		parentsList.add(new Parent("mother", "Password1234", "Credit Billing"));
 		vendorsList.add(new Vendor("vendor", "Password1234", "11111111", "address"));
@@ -100,6 +99,25 @@ public class Main {
 	    System.out.println(output);
 	}
 	
+	public static void addSchool(ArrayList<School> schoolsList) {
+		setHeader("ADD SCHOOL");
+		String name = Helper.readString("Enter school name: ");
+		int id = schoolsList.size();
+		School newSchool = new School(name, id);
+	}
+	
+	public static void removeSchool(ArrayList<School> schoolsList) {
+		
+	}
+	
+	public static void addPayment(ArrayList<String> paymentsList) {
+		
+	}
+	
+	public static void removePayment(ArrayList<String> paymentsList) {
+		
+	}
+	
 	public static int signup(ArrayList<User> usersList) {
 	    setHeader("SIGN UP");
 	    
@@ -135,7 +153,6 @@ public class Main {
 	    return 1;
 	}
 	
-
 	public static int login(ArrayList<User> usersList) {
 
 	    setHeader("LOG IN");
@@ -248,26 +265,21 @@ public class Main {
     }
 	
 	
-	 public static void adminMenu(ArrayList<User> usersList, ArrayList<Vendor> vendorsList, ArrayList<Order> ordersList) {
+	 public static void adminMenu(ArrayList<Parent> parentsList, ArrayList<Vendor> vendorsList, ArrayList<Order> ordersList, ArrayList<String> paymentsList, ArrayList<School> schoolsList) {
 	        int option = 0;
 
-	        while (option != 14) {
+	        while (option != 10) {
 	            setHeader("MANAGEMENT");
 	            System.out.println("1. See all parents");
 	            System.out.println("2. See all vendors");
-	            System.out.println("2. See all schools");
-	            System.out.println("3. See all orders");
-	            System.out.println("4. See all payments");
-	            System.out.println("5. Add vendor");
-	            System.out.println("6. Edit vendor");
-	            System.out.println("7. Remove vendors");
-	            System.out.println("8. Add school");
-	            System.out.println("9. Edit school");
-	            System.out.println("10. Remove school");
-	            System.out.println("11. Add payment");
-	            System.out.println("12. Edit payment");
-	            System.out.println("13. Remove payment");	            
-	            System.out.println("14. Logout");
+	            System.out.println("3. See all schools");
+	            System.out.println("4. See all orders");
+	            System.out.println("5. See all payments");
+	            System.out.println("6. Add school");
+	            System.out.println("7. Remove school");
+	            System.out.println("8. Add payment");
+	            System.out.println("9. Remove payment");	            
+	            System.out.println("10. Logout");
 	            Helper.line(80, "-");
 
 	            option = Helper.readInt("Enter an option > ");
@@ -286,33 +298,18 @@ public class Main {
 	                    viewAllPayments(paymentsList);
 	                    break;
 	                case 5:
-	                    addVendor(vendorsList);
-	                    break;
-	                case 6:
-	                    editVendor(vendorsList);
-	                    break;
-	                case 7:
-	                    removeVendors(vendorsList);
-	                    break;
-	                case 8:
 	                    addSchool(schoolsList);
 	                    break;
-	                case 9:
-	                    editSchool(schoolsList);
-	                    break;
-	                case 10:
+	                case 6:
 	                    removeSchool(schoolsList);
 	                    break;
-	                case 11:
+	                case 7:
 	                    addPayment(paymentsList);
 	                    break;
-	                case 12:
-	                    editPayment(paymentsList);
+	                case 8:
+	                    removePayment(paymentsList);
 	                    break;
-	                case 13:
-	                    removeSchool(paymentsList);
-	                    break;
-	                case 14:
+	                case 9:
 	                    System.out.println("Logging out from Admin Menu.");
 	                    return;
 	                default:
