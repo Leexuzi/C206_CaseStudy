@@ -16,16 +16,19 @@ public class C206_CaseStudy {
 
         // Additional interactions can be added here
 
-		menusList.add(new MenuItem("CC001", "Sony HDR-CX405", 35));
-		camcorderList.add(new Camcorder("CC002", "Panasonic HC-MDH2", 10));
-		chromebookList.add(new Chromebook("CB001", "ASUS Chromebook ", "Win 10"));
-		chromebookList.add(new Chromebook("CB002", "HP Chromebook", "Win 10"));
-
+		menusList.add(new MenuItem("Taco", 2));
+		userList.add(new User("ashhhlolol", "Password1234"));
+		schoolList.add(new School("Republic Poly", 4));
+		adminsList.add(new Chromebook("waynerei", "Password1234"));
+		parentList.add(new Chromebook("mother", "Password1234"));
+		vendorList.add(new Chromebook("vendor", "Password1234"));
+		orderList.add(new Chromebook("Mother", "Ramen", true , true));
+		
 		int option = 0;
 
 		while (option != 5) {
 
-			C206_CaseStudy.menu();
+			C206_CaseStudy.MenuItem();
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
