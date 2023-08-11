@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy
 public class User {
 	private String username;
 	private String password;
