@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 public class Main {
@@ -54,6 +53,7 @@ public class Main {
 			}
 		}
     }
+
 //			if (option == 1) {
 //				// View all items
 //				Main.viewAllUser(usersList);
@@ -455,4 +455,3 @@ public class Main {
 //		// write your code here
 //	}
 //
-//}
