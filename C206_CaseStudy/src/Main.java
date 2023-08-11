@@ -110,9 +110,16 @@ public class Main {
 
 		}
 	}
+    
+    public static void mainMenu() {
+		Main.setHeader("SCHOOL LUNCH BOX ORDERING SYSTEM");
+		System.out.println("1. Sign in");
+		System.out.println("2. Log in");
+		Helper.line(80, "-");
+	}
 
 	public static void parentMenu() {
-		Main.setHeader("SCHOOL LUNCH BOX ORDERING");
+		Main.setHeader("ORDER PAGE");
 		System.out.println("1. See all menus");
 		System.out.println("2. Order item");
 		System.out.println("3. See orders");
@@ -122,7 +129,7 @@ public class Main {
 	}
 	
 	public static void vendorMenu() {
-		Main.setHeader("LUNCHES");
+		Main.setHeader("MANAGE LUNCHES");
 		System.out.println("1. See all items");
 		System.out.println("2. Add item");
 		System.out.println("3. Add item");
