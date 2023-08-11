@@ -1,20 +1,22 @@
+public class Menu {
+    private String food;
+    private int quantity;
 
-public class Menu extends Parent{
-private int opticalZoom;
+    public Menu(String food, int quantity) {
+        this.food = food;
+        this.quantity = quantity;
+    }
 
-	public Menu(String assetTag, String description, int opticalZoom) {
-		super(assetTag, description);
-		this.opticalZoom = opticalZoom;
-	}
+    public String getFood() {
+        return food;
+    }
 
-	public int getOpticalZoom() {
-		return opticalZoom;
-	}
-	
-	public String toString(){
-		String output = "";
-		// Write your codes here
-		return output;
-	}
+    public int getQuantity() {
+        return quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Food: " + food + ", Quantity: " + quantity;
+    }
 }
-
