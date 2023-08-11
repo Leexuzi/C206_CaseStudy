@@ -1,18 +1,18 @@
 
 public class Parent extends User{
-	private String paymentMethod;
+	private String paymentPreferred;
 
-	public Parent(String username, String password, String paymentMethod) {
+	public Parent(String username, String password, String paymentPreferred) {
 		super(username, password);
-		this.paymentMethod = paymentMethod;
+		this.paymentPreferred = paymentPreferred;
 	}
 	
 	public String getPaymentMethod() {
-		return paymentMethod;
+		return paymentPreferred;
 	}
 	
-	public void setPaymentMethod(String paymentMethod) {
-		this.paymentMethod = paymentMethod;
+	public void setPaymentMethod(String paymentPreferred) {
+		this.paymentPreferred = paymentPreferred;
 	}
 }
 
