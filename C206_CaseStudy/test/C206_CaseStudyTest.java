@@ -93,6 +93,100 @@ public class C206_CaseStudyTest {
         // ... (other testDoDeleteMenu assertions)
 
     }
+    @Test
+    public void testAddUser() {
+        assertNotNull("Check if there is valid menuItem to delete", menuList);
+        
+        // ... (other testDoDeleteMenu assertions)
+
+    }
+    @Test
+    public void testDeleteUser() {
+        assertNotNull("Check if there is valid user to delete", menuList);
+        
+        // ... (other testDoDeleteMenu assertions)
+
+    }
+    @Test
+    public void testViewUser() {
+        assertNotNull("Check if there is valid menuItem to delete", menuList);
+        
+        // ... (other testDoDeleteMenu assertions)
+
+    }
+    @Test
+    public void testAddSchool() {
+        assertNotNull("Check if there is valid menuItem to delete", menuList);
+        
+        // ... (other testDoDeleteMenu assertions)
+
+    }
+    @Test
+    public void testAddOrder() {
+        assertNotNull("Check if there is valid menuItem to delete", menuList);
+        
+        // ... (other testDoDeleteMenu assertions)
+
+    }
+    @Test
+    public void testUpdateOrder() {
+        assertNotNull("Check if there is valid menuItem to delete", menuList);
+        
+        // ... (other testDoDeleteMenu assertions)
+
+    }
+    @Test
+    public void testDeleteOrder() {
+        assertNotNull("Check if there is valid menuItem to delete", menuList);
+        
+        // ... (other testDoDeleteMenu assertions)
+
+    }
+    @Test
+    public void testAddPayment() {
+        assertNotNull("Check if there is valid menuItem to delete", menuList);
+        
+        // ... (other testDoDeleteMenu assertions)
+
+    }
+
+@Test
+public void testViewPayment() {
+    assertNotNull("Check if there is valid menuItem to delete", menuList);
+    
+    // ... (other testDoDeleteMenu assertions)
+
+}
+
+@Test
+public void testDeletePayment() {
+    assertNotNull("Check if there is valid menuItem to delete", menuList);
+    
+    // ... (other testDoDeleteMenu assertions)
+
+}
+@Test
+public void testViewVendor() {
+    assertNotNull("Check if there is valid menuItem to delete", menuList);
+    
+    // ... (other testDoDeleteMenu assertions)
+
+}
+@Test
+public void testDeleteVendor() {
+    assertNotNull("Check if there is valid menuItem to delete", menuList);
+    
+    // ... (other testDoDeleteMenu assertions)
+
+}
+@Test
+public void testAddVendor() {
+    assertNotNull("Check if there is valid menuItem to delete", menuList);
+    
+    // ... (other testDoDeleteMenu assertions)
+
+}
+    
 
     @After
     public void tearDown() throws Exception {
