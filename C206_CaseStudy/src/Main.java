@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 public class Main {
@@ -36,6 +35,8 @@ public class Main {
 			else {
 				Main.login();
 			}
+		}
+    }
 //			if (option == 1) {
 //				// View all items
 //				Main.viewAllUser(usersList);
@@ -177,164 +178,264 @@ public class Main {
 			avail = "No";
 		}
 		return avail;
-	}
-
-	//================================= Option 1 View items (CRUD- Read) =================================
-	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
-		String output = "";
-
-		for (int i = 0; i < camcorderList.size(); i++) {
-			if (camcorderList.get(i).getIsAvailable()) {
-				output += String.format("%-10s %-30s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
-					camcorderList.get(i).getDescription(), 
-					ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable()),
-					camcorderList.get(i).getDueDate(),camcorderList.get(i).getOpticalZoom());
-			}
-		}
-		return output;
+    }
+	
+	//sign up option
+	public static void signin() {
+		
 	}
 	
-	public static void viewAllCamcorder(ArrayList<Camcorder> camcorderList) {
-		ResourceCentre.setHeader("CAMCORDER LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
-				"AVAILABLE", "DUE DATE","OPTICAL ZOOM");
-		 output += retrieveAllCamcorder(camcorderList);	
-		System.out.println(output);
-	}
-
-	public static String retrieveAllChromebook(ArrayList<Chromebook> chromebookList) {
-		String output = "";
-		// write your code here
-		return output;
-	}
-	public static void viewAllChromebook(ArrayList<Chromebook> chromebookList) {
-		// write your code here
-		String output = retrieveAllChromebook(chromebookList);
-		System.out.println(output);
-	}
-
-	//================================= Option 2 Add an item (CRUD - Create) =================================
-	public static Camcorder inputCamcorder() {
-		String tag = Helper.readString("Enter asset tag > ");
-		String description = Helper.readString("Enter description > ");
-		int zoom = Helper.readInt("Enter optical zoom > ");
-
-		Camcorder cc= new Camcorder(tag, description, zoom);
-		return cc;
+	//log in option
+	public static void login() {
 		
-	}
-	public static void addCamcorder(ArrayList<Camcorder> camcorderList, Camcorder cc) {
-		Camcorder item;
-		for(int i = 0; i < camcorderList.size(); i++) {
-			item = camcorderList.get(i);
-			if (item.getAssetTag().equalsIgnoreCase(cc.getAssetTag()) )
-				return;
-		}
-		if ((cc.getAssetTag().isEmpty()) || (cc.getDescription().isEmpty()) ) {
-			return;
-		}
-		
-		camcorderList.add(cc);
 	}
 	
-	public static Chromebook inputChromebook() {	
-		Chromebook cb =null;
-		// write your code here
+	public static void viewAllUsers(ArrayList<User> userList) {
+	    setHeader("USER LIST");
+	    String output = String.format("%-20s %-20s\n", "USERNAME", "PASSWORD");
+	    output += retrieveAllUsers(userList);
+	    System.out.println(output);
+	}
 
-		return cb;
-		
-	}	
-	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
-		// write your code here
-		Chromebook item;
-		for(int i = 0; i < chromebookList.size(); i++) {
-			item = chromebookList.get(i);
-			if (item.getAssetTag().equalsIgnoreCase(cb.getAssetTag()) )
-				return;
-		}
-		if ((cb.getAssetTag().isEmpty()) || (cb.getDescription().isEmpty()) ) {
-			return;
-		}
+	public static void viewAllSchools(ArrayList<School> schoolList) {
+	    setHeader("SCHOOL LIST");
+	    String output = String.format("%-30s %-10s\n", "SCHOOL NAME", "TIER");
+	    output += retrieveAllSchools(schoolList);
+	    System.out.println(output);
+	}
+
+	public static void viewAllAdmins(ArrayList<Admin> adminList) {
+	    setHeader("ADMIN LIST");
+	    String output = String.format("%-20s %-20s\n", "USERNAME", "PASSWORD");
+	    output += retrieveAllAdmins(adminList);
+	    System.out.println(output);
 	}
 	
-	//================================= Option 3 Loan an item (CRUD - Update) =================================
-	public static boolean doLoanCamcorder(ArrayList<Camcorder> camcorderList, String tag, String dueDate) {
-		
-		boolean isLoaned = false;
-
-		if (tag.isEmpty() || dueDate.isEmpty())
-			return false;
-		
-		for (int i = 0; i < camcorderList.size(); i++) {
-			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
-					&& camcorderList.get(i).getIsAvailable() == true) {
-				
-				camcorderList.get(i).setIsAvailable(false);
-				camcorderList.get(i).setDueDate(dueDate);
-				
-				isLoaned = true;
-			}
-		}
-		return isLoaned;
+	public static void viewAllParents(ArrayList<Parent> parentList) {
+	    setHeader("PARENT LIST");
+	    String output = String.format("%-20s %-20s %-20s\n", "USERNAME", "PASSWORD", "PAYMENT METHOD");
+	    output += retrieveAllParents(parentList);
+	    System.out.println(output);
 	}
-	public static void loanCamcorder(ArrayList<Camcorder> camcorderList) {
-		ResourceCentre.viewAllCamcorder(camcorderList);
-		String tag = Helper.readString("Enter asset tag > ");
-		String due = Helper.readString("Enter due date > ");
-		Boolean isLoaned =doLoanCamcorder(camcorderList, tag, due);
-		if (isLoaned == false) {
-			System.out.println("Invalid asset tag");
-		} else {
-			System.out.println("Camcorder " + tag + " loaned out");
-		}
+
+	public static void viewAllVendors(ArrayList<Vendor> vendorList) {
+	    setHeader("VENDOR LIST");
+	    String output = String.format("%-20s %-20s %-20s %-20s\n", "USERNAME", "PASSWORD", "CONTACT", "ADDRESS");
+	    output += retrieveAllVendors(vendorList);
+	    System.out.println(output);
+	}
+
+	public static void viewAllOrders(ArrayList<Order> orderList) {
+	    setHeader("ORDER LIST");
+	    String output = String.format("%-20s %-20s\n", "PARENT", "ITEM");
+	    output += retrieveAllOrders(orderList);
+	    System.out.println(output);
+	}
+
+
+	//================================= Option 1 View all Users =================================
+	public static void option1View() {
+	    int option = 0;
+
+	    while (option != 7) {
+	        setHeader("VIEW");
+	        System.out.println("1. View all users");
+	        System.out.println("2. View all schools");
+	        System.out.println("3. View all admins");
+	        System.out.println("4. View all parents");
+	        System.out.println("5. View all vendors");
+	        System.out.println("6. View all orders");
+	        System.out.println("7. Back");
+	        Helper.line(80, "-");
+
+	        option = Helper.readInt("Enter an option > ");
+
+	        switch (option) {
+	            case 1:
+	                viewAllUsers(usersList);
+	                break;
+	            case 2:
+	                viewAllSchools(schoolsList);
+	                break;
+	            case 3:
+	                viewAllAdmins(adminsList);
+	                break;
+	            case 4:
+	                viewAllParents(parentsList);
+	                break;
+	            case 5:
+	                viewAllVendors(vendorsList);
+	                break;
+	            case 6:
+	                viewAllOrders(ordersList);
+	                break;
+	            case 7:
+	                return; // Exit the option
+	            default:
+	                System.out.println("Invalid option. Please choose again.");
+	        }
+	    }
 	}
 	
-	public static boolean doLoanChromebook(ArrayList<Chromebook> chromebookList, String tag, String dueDate) {
-		// write your code here
-		return true;
-	}
-	public static void loanChromebook(ArrayList<Chromebook> chromebookList) {
-		// write your code here		
-	}
 	
-	//================================= Option 4 Return an item (CRUD - Update)=================================
-	public static boolean doReturnCamcorder(ArrayList<Camcorder> camcorderList,String tag) {
-		boolean isReturned = false;
-
-		if (tag.isEmpty())
-			return false;
-		
-		for (int i = 0; i < camcorderList.size(); i++) {
-			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
-					&& camcorderList.get(i).getIsAvailable() == false) {
-				camcorderList.get(i).setIsAvailable(true);
-				camcorderList.get(i).setDueDate("");
-				isReturned = true;
-				
-			}
-		}
-		return isReturned;
-		
-	}
-	public static void returnCamcorder(ArrayList<Camcorder> camcorderList) {
-		ResourceCentre.viewAllCamcorder(camcorderList);
-		String tag = Helper.readString("Enter asset tag > ");
-		Boolean isReturned = doReturnCamcorder(camcorderList, tag);
-		
-		if (isReturned == false) {
-			System.out.println("Invalid asset tag");
-		} else {
-			System.out.println("Camcorder " + tag + " returned");
-		}
-	}
-
-	public static boolean doReturnChromebook(ArrayList<Chromebook> chromebookList,String tag){
-		boolean isReturned = false;
-		// write your code here
-		return isReturned;
-	}
-	public static void returnChromebook(ArrayList<Chromebook> chromebookList) {
-		// write your code here
-	}
-
+	
 }
+//	//================================= Option 1 View items (CRUD- Read) =================================
+//	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
+//		String output = "";
+//
+//		for (int i = 0; i < camcorderList.size(); i++) {
+//			if (camcorderList.get(i).getIsAvailable()) {
+//				output += String.format("%-10s %-30s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
+//					camcorderList.get(i).getDescription(), 
+//					ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable()),
+//					camcorderList.get(i).getDueDate(),camcorderList.get(i).getOpticalZoom());
+//			}
+//		}
+//		return output;
+//	}
+//	
+//	public static void viewAllCamcorder(ArrayList<Camcorder> camcorderList) {
+//		ResourceCentre.setHeader("CAMCORDER LIST");
+//		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
+//				"AVAILABLE", "DUE DATE","OPTICAL ZOOM");
+//		 output += retrieveAllCamcorder(camcorderList);	
+//		System.out.println(output);
+//	}
+//
+//	public static String retrieveAllChromebook(ArrayList<Chromebook> chromebookList) {
+//		String output = "";
+//		// write your code here
+//		return output;
+//	}
+//	public static void viewAllChromebook(ArrayList<Chromebook> chromebookList) {
+//		// write your code here
+//		String output = retrieveAllChromebook(chromebookList);
+//		System.out.println(output);
+//	}
+//
+//	//================================= Option 2 Add an item (CRUD - Create) =================================
+//	public static Camcorder inputCamcorder() {
+//		String tag = Helper.readString("Enter asset tag > ");
+//		String description = Helper.readString("Enter description > ");
+//		int zoom = Helper.readInt("Enter optical zoom > ");
+//
+//		Camcorder cc= new Camcorder(tag, description, zoom);
+//		return cc;
+//		
+//	}
+//	public static void addCamcorder(ArrayList<Camcorder> camcorderList, Camcorder cc) {
+//		Camcorder item;
+//		for(int i = 0; i < camcorderList.size(); i++) {
+//			item = camcorderList.get(i);
+//			if (item.getAssetTag().equalsIgnoreCase(cc.getAssetTag()) )
+//				return;
+//		}
+//		if ((cc.getAssetTag().isEmpty()) || (cc.getDescription().isEmpty()) ) {
+//			return;
+//		}
+//		
+//		camcorderList.add(cc);
+//	}
+//	
+//	public static Chromebook inputChromebook() {	
+//		Chromebook cb =null;
+//		// write your code here
+//
+//		return cb;
+//		
+//	}	
+//	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
+//		// write your code here
+//		Chromebook item;
+//		for(int i = 0; i < chromebookList.size(); i++) {
+//			item = chromebookList.get(i);
+//			if (item.getAssetTag().equalsIgnoreCase(cb.getAssetTag()) )
+//				return;
+//		}
+//		if ((cb.getAssetTag().isEmpty()) || (cb.getDescription().isEmpty()) ) {
+//			return;
+//		}
+//	}
+//	
+//	//================================= Option 3 Loan an item (CRUD - Update) =================================
+//	public static boolean doLoanCamcorder(ArrayList<Camcorder> camcorderList, String tag, String dueDate) {
+//		
+//		boolean isLoaned = false;
+//
+//		if (tag.isEmpty() || dueDate.isEmpty())
+//			return false;
+//		
+//		for (int i = 0; i < camcorderList.size(); i++) {
+//			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
+//					&& camcorderList.get(i).getIsAvailable() == true) {
+//				
+//				camcorderList.get(i).setIsAvailable(false);
+//				camcorderList.get(i).setDueDate(dueDate);
+//				
+//				isLoaned = true;
+//			}
+//		}
+//		return isLoaned;
+//	}
+//	public static void loanCamcorder(ArrayList<Camcorder> camcorderList) {
+//		ResourceCentre.viewAllCamcorder(camcorderList);
+//		String tag = Helper.readString("Enter asset tag > ");
+//		String due = Helper.readString("Enter due date > ");
+//		Boolean isLoaned =doLoanCamcorder(camcorderList, tag, due);
+//		if (isLoaned == false) {
+//			System.out.println("Invalid asset tag");
+//		} else {
+//			System.out.println("Camcorder " + tag + " loaned out");
+//		}
+//	}
+//	
+//	public static boolean doLoanChromebook(ArrayList<Chromebook> chromebookList, String tag, String dueDate) {
+//		// write your code here
+//		return true;
+//	}
+//	public static void loanChromebook(ArrayList<Chromebook> chromebookList) {
+//		// write your code here		
+//	}
+//	
+//	//================================= Option 4 Return an item (CRUD - Update)=================================
+//	public static boolean doReturnCamcorder(ArrayList<Camcorder> camcorderList,String tag) {
+//		boolean isReturned = false;
+//
+//		if (tag.isEmpty())
+//			return false;
+//		
+//		for (int i = 0; i < camcorderList.size(); i++) {
+//			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
+//					&& camcorderList.get(i).getIsAvailable() == false) {
+//				camcorderList.get(i).setIsAvailable(true);
+//				camcorderList.get(i).setDueDate("");
+//				isReturned = true;
+//				
+//			}
+//		}
+//		return isReturned;
+//		
+//	}
+//	public static void returnCamcorder(ArrayList<Camcorder> camcorderList) {
+//		ResourceCentre.viewAllCamcorder(camcorderList);
+//		String tag = Helper.readString("Enter asset tag > ");
+//		Boolean isReturned = doReturnCamcorder(camcorderList, tag);
+//		
+//		if (isReturned == false) {
+//			System.out.println("Invalid asset tag");
+//		} else {
+//			System.out.println("Camcorder " + tag + " returned");
+//		}
+//	}
+//
+//	public static boolean doReturnChromebook(ArrayList<Chromebook> chromebookList,String tag){
+//		boolean isReturned = false;
+//		// write your code here
+//		return isReturned;
+//	}
+//	public static void returnChromebook(ArrayList<Chromebook> chromebookList) {
+//		// write your code here
+//	}
+//
+//}
