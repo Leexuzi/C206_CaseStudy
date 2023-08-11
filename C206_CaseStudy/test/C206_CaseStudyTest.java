@@ -7,9 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
-	private Camcorder cc1;
-	private Camcorder cc2;
-	private Chromebook cb1;
+	private Menu m1;
+	private Menu m2;
+	private  cb1;
 	private Chromebook cb2;
 	
 	private ArrayList<Camcorder> camcorderList;
@@ -33,7 +33,7 @@ public class C206_CaseStudyTest {
 
 	
 	@Test
-	public void testAddCamcorder() {
+	public void test testAddMenu() {
 		// Item list is not null, so that can add a new item - boundary
 		assertNotNull("Check if there is valid Camcorder arraylist to add to", camcorderList);
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
@@ -49,7 +49,7 @@ public class C206_CaseStudyTest {
 		assertSame("Check that Camcorder is added", cc2, camcorderList.get(1));
 	}
 	@Test
-	public void testAddChromebook() {
+	public void testUpdateMenu() {
 		// Item list is not null, so that can add a new item - boundary
 		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
 		
@@ -67,7 +67,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testRetrieveAllCamcorder() {
+	public void testDeleteMenu() {
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Camcorder arraylist to retrieve item", camcorderList);
 		
@@ -90,7 +90,7 @@ public class C206_CaseStudyTest {
 		
 	}
 	@Test
-	public void testRetrieveAllChrombook() {
+	public void testRegisterAccount() {
 		//fail("Not yet implemented");
 		// Test if Item list is not null but empty - boundary
 		assertNotNull("Test if there is valid Chromebook arraylist to retrieve item from", chromebookList);
@@ -113,7 +113,7 @@ public class C206_CaseStudyTest {
 	}
 
 	@Test
-	public void testDoLoanCamcorder() {
+	public void testCreateAccount() {
 		//boundary
 		assertNotNull("test if there is valid Camcorder arraylist to loan from", camcorderList);
 		
@@ -136,7 +136,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testDoLoanChromebook() {
+	public void testDoAddMenu() {
 		//boundary
 		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
 		ResourceCentre.addChromebook(chromebookList, cb1);
@@ -158,7 +158,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testDoReturnCamcorder() {
+	public void testDoUpdateMenu() {
 		//boundary
 		assertNotNull("Test if there is valid Camcorder arraylist to add to", camcorderList);
 		ResourceCentre.addCamcorder(camcorderList, cc1);
@@ -176,7 +176,7 @@ public class C206_CaseStudyTest {
 		
 	}
 	@Test
-	public void testDoReturnChromebook() {
+	public void testDoDeleteMenu() {
 		//boundary
 		assertNotNull("Check if there is valid chromebook arraylist to add to", chromebookList);
 		ResourceCentre.addChromebook(chromebookList, cb1);
