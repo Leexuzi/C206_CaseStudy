@@ -15,9 +15,9 @@
  *
  */
 public class User {
-
+//test
 }
-=======
+
 
 public class User {
 	private String username;
