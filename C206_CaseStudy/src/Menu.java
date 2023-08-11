@@ -1,5 +1,5 @@
 
-public class Menu extends Payment{
+public class Menu extends Parent{
 private int opticalZoom;
 
 	public Menu(String assetTag, String description, int opticalZoom) {
