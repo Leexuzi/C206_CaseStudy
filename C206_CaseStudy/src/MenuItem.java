@@ -4,7 +4,7 @@ public class MenuItem {
 
     public MenuItem(String food, int quantity) {
         this.food = food;
-        this.quantity = quantity;
+        this.quantity = quantity
     }
 
     public String getFood() {
