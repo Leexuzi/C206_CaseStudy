@@ -4,30 +4,42 @@ public class C206_CaseStudy {
 
     public static void main(String[] args) {
         // Sample code for demonstrating interactions
-        ArrayList<Menu> menus = new ArrayList<>();
-        ArrayList<User> users = new ArrayList<>();
-
-        parent.placeOrder(menu, menuItem, 2);
+        ArrayList<MenuItem> menusList = new ArrayList<>();
+        ArrayList<User> usersList = new ArrayList<>();
+        ArrayList<School> schoolsList = new ArrayList<>();
+        ArrayList<Admin> adminsList = new ArrayList<>();
+        ArrayList<Parent> parentsList = new ArrayList<>();
+        ArrayList<Vendor> vendorsList = new ArrayList<>();
+        ArrayList<Order> ordersList = new ArrayList<>();
 
         // Additional interactions can be added here
 
-		camcorderList.add(new Camcorder("CC001", "Sony HDR-CX405", 35));
-		camcorderList.add(new Camcorder("CC002", "Panasonic HC-MDH2", 10));
-		chromebookList.add(new Chromebook("CB001", "ASUS Chromebook ", "Win 10"));
-		chromebookList.add(new Chromebook("CB002", "HP Chromebook", "Win 10"));
-
+		menusList.add(new MenuItem("Taco", 2));
+		usersList.add(new User("ashhhlolol", "Password1234"));
+		schoolsList.add(new School("Republic Poly", 4));
+		adminsList.add(new Admin("waynerei", "Password1234"));
+		parentsList.add(new Parent("mother", "Password1234", "Credit Billing"));
+		vendorsList.add(new Vendor("vendor", "Password1234", "11111111", "address"));
+		ordersList.add(new Order(parentsList.get(0), "Ramen"));
+		
 		int option = 0;
 
 		while (option != 5) {
 
-			ResourceCentre.menu();
+			C206_CaseStudy.MenuItem();
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
 				// View all items
-				ResourceCentre.viewAllCamcorder(camcorderList);
-				ResourceCentre.viewAllChromebook(chromebookList);
-
+				C206_CaseStudy.viewAllUser(usersList);
+				C206_CaseStudy.viewAllMenuItem(MenuItemList);
+				C206_CaseStudy.viewAllSchool(SchoolList);
+				C206_CaseStudy.viewAlParents(ParentList);
+				C206_CaseStudy.viewAllOrder(OrderList);
+				C206_CaseStudy.viewAllVendor(VendorList);
+				C206_CaseStudy.viewAllAdmin(AdminList);
+				//Ashley
+				
 			} else if (option == 2) {
 				// Add a new item
 				ResourceCentre.setHeader("ADD");			
@@ -124,10 +136,15 @@ public class C206_CaseStudy {
 		C206_CaseStudy.setHeader("MANAGEMENT");
 		System.out.println("1. See all users");
 		System.out.println("2. See all vendors");
-		System.out.println("3. Add vendor");
-		System.out.println("4. ");
-		System.out.println("5. See orders");
-		System.out.println("6. Logout");
+		System.out.println("3. See all orders");
+		System.out.println("4. See all payments");
+		System.out.println("5. Add vendor");
+		System.out.println("6. Edit vendor");
+		System.out.println("7. Remove vendors");
+		System.out.println("8. Add school");
+		System.out.println("9. Edit school");
+		System.out.println("10. Remove school");
+		System.out.println("11. Logout");
 		Helper.line(80, "-");
 	}
 	

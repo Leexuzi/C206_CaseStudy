@@ -22,5 +22,7 @@ public class School {
     public void setSchoolID(int schoolID) {
         this.schoolID = schoolID;
     }
+
 }
-// Wayne
+
+
