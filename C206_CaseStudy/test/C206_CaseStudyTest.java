@@ -9,8 +9,7 @@ import org.junit.Test;
 public class C206_CaseStudyTest {
 	private Menu m1;
 	private Menu m2;
-	private  cb1;
-	private Chromebook cb2;
+
 	
 	private ArrayList<Camcorder> camcorderList;
 	private ArrayList<Chromebook> chromebookList;
@@ -24,46 +23,45 @@ public class C206_CaseStudyTest {
 		// prepare test data
 		m1 = new Menu("Taco", 2);
 		m2 = new Menu("Ramen", 3);
-		cb1 = new Chromebook("CB0011", "My Google Chromebook 1st", "Mac OS");
-		cb2 = new Chromebook("CB0012", "SAMSUNG Chromebook 4+", "Win 10");
+		
 
-		camcorderList= new ArrayList<Camcorder>();
-		chromebookList= new ArrayList<Chromebook>();
+		menuItem= new ArrayList<Menu>();
+		
 	}
 
 	
 	@Test
 	public void test testAddMenu() {
 		// Item list is not null, so that can add a new item - boundary
-		assertNotNull("Check if there is valid Camcorder arraylist to add to", camcorderList);
+		assertNotNull("Test if menu can be added", menuItem);
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		//The item just added is as same as the first item of the list
-		ResourceCentre.addCamcorder(camcorderList, cc1);
-		assertEquals("Check that Camcorder arraylist size is 1", 1, camcorderList.size());
-		assertSame("Check that Camcorder is added", cc1, camcorderList.get(0));
+		ResourceCentre.addMenu(menuItem, m1);
+		assertEquals("Check that menuItem size is 1", 1, menuItem.size());
+		assertSame("Check that menu is added", m1, menuItem.get(0));
 		
 		//Add another item. test The size of the list is 2? -normal
 		//The item just added is as same as the second item of the list
-		ResourceCentre.addCamcorder(camcorderList, cc2);
-		assertEquals("Check that Camcorder arraylist size is 2", 2, camcorderList.size());
-		assertSame("Check that Camcorder is added", cc2, camcorderList.get(1));
+		ResourceCentre.addMenu(menuItem, m2);
+		assertEquals("Check that menuItem size is 2", 2, menuItem.size());
+		assertSame("Check that menu is added", m2, menuItem.get(1));
 	}
 	@Test
 	public void testUpdateMenu() {
 		// Item list is not null, so that can add a new item - boundary
-		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
+		assertNotNull("Test if there is valid menuItem to add to", menuItem);
 		
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		//The item just added is as same as the first item of the list
-		ResourceCentre.addChromebook(chromebookList, cb1);		
-		assertEquals("Test that Chromebook arraylist size is 1", 1, chromebookList.size());
-		assertSame("Test that Chromebook is added", cb1, chromebookList.get(0));
+		ResourceCentre.addMenu(menuItem, m1);		
+		assertEquals("Test that menuItem size is 1", 1, menuItem.size());
+		assertSame("Test that menu is added", m1, menuItem.get(0));
 		
 		//Add another item. test The size of the list is 2? - normal
 		//The item just added is as same as the second item of the list
-		ResourceCentre.addChromebook(chromebookList, cb2);
-		assertEquals("Test that Chromebook arraylist size is 2", 2, chromebookList.size());
-		assertSame("Test that Chromebook is added", cb2, chromebookList.get(1));
+		ResourceCentre.addMenu(menuItem, m2);
+		assertEquals("Test that menuItem size is 2", 2, menuItem.size());
+		assertSame("Test that menuItem is added", m2, menuItem.get(1));
 	}
 	
 	@Test
@@ -72,135 +70,133 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if there is valid Camcorder arraylist to retrieve item", camcorderList);
 		
 		//test if the list of camcorders retrieved from the SourceCentre is empty - boundary
-		String allCamcorder= ResourceCentre.retrieveAllCamcorder(camcorderList);
+		String allMenuItem= ResourceCentre.retrieveAllMenu(menuItem);
 		String testOutput = "";
-		assertEquals("Check that ViewAllCamcorderlist", testOutput, allCamcorder);
+		assertEquals("Check that ViewAllMenuItem", testOutput, allMenu);
 		
 		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
-		ResourceCentre.addCamcorder(camcorderList, cc1);
-		ResourceCentre.addCamcorder(camcorderList, cc2);
-		assertEquals("Test that Camcorder arraylist size is 2", 2, camcorderList.size());
+		ResourceCentre.addMenuItem(menuItem, m1);
+		ResourceCentre.addMenuItem(menuItem, m2);
+		assertEquals("Test that menuItem size is 2", 2, menuItem.size());
 		
 		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre	
-		allCamcorder= ResourceCentre.retrieveAllCamcorder(camcorderList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","CC0011", "Nikon HDSLR", "Yes", "", "40");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CC0012", "Sony DSC-RX100M7", "Yes", "", "20" );
+		allMenu= ResourceCentre.retrieveAllMenu(menuItem);
+		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","", "Taco", "", "", "2");
+		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","", "Ramen", "", "", "3" );
 	
-		assertEquals("Test that ViewAllCamcorderlist", testOutput, allCamcorder);
+		assertEquals("Test that ViewAllMenuItem", testOutput, allMenu);
 		
 	}
 	@Test
 	public void testRegisterAccount() {
 		//fail("Not yet implemented");
 		// Test if Item list is not null but empty - boundary
-		assertNotNull("Test if there is valid Chromebook arraylist to retrieve item from", chromebookList);
+		assertNotNull("Test if there is valid menuItem to retrieve item from", menuItem);
 		
 		//test if the list of Chromebook retrieved from the SourceCentre is empty - boundary
-		String allChrombook= ResourceCentre.retrieveAllChromebook(chromebookList);
+		String allMenu= ResourceCentre.retrieveAllMenuItem(menuItem);
 		String testOutput = "";
-		assertEquals("Test that the retrieved Chromebooklist is empty?", testOutput, allChrombook);
+		assertEquals("Test that the retrieved menu is empty?", testOutput, allMenu);
 		
 		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
-		ResourceCentre.addChromebook(chromebookList, cb1);
-		ResourceCentre.addChromebook(chromebookList, cb2);
-		assertEquals("Test that chromebook arraylist size is 2", 2, chromebookList.size());
+		ResourceCentre.addMenu(menuItem, m1);
+		ResourceCentre.addMenu(menuItem, m2);
+		assertEquals("Test that menuItem size is 2", 2, menuItem.size());
 		
 		//test if the expected output string same as the list of chromebooks retrieved from the SourceCentre	
-		allChrombook= ResourceCentre.retrieveAllChromebook(chromebookList);
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0011", "My Google Chromebook 1st","Yes", "", "Mac OS");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0012", "SAMSUNG Chromebook 4+", "Yes", "","Win 10");	
-		assertEquals("Test that ViewAllChromebooklist", testOutput, allChrombook);
+		allMenu= ResourceCentre.retrieveAllMenu(menuItem);
+		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","", "Taco", "", "", "2");
+		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","", "Ramen", "", "", "3" );
+		assertEquals("Test that ViewAllMenuItem", testOutput, menuItem);
 	}
 
 	@Test
 	public void testCreateAccount() {
 		//boundary
-		assertNotNull("test if there is valid Camcorder arraylist to loan from", camcorderList);
+		assertNotNull("test if there is valid menu", menuItem);
 		
-		ResourceCentre.addCamcorder(camcorderList, cc1);
+		ResourceCentre.addMenu(menuItem, m1);
 		// normal
-		Boolean ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "8-8-2020" );
-		assertTrue("Test if an available item is ok to loan?", ok);
+		Boolean ok = ResourceCentre.doMenu(menuItem, "", "" );
+		assertTrue("Test if item is available?", ok);
 		//error condition
-		ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "8-8-2020" );
-		assertFalse("Test if an same item is NOT ok to loan again?", ok);	
+		ok = ResourceCentre.doMenu(menuItem, "", "" );
+		assertFalse("Test if there are no same item?", ok);	
 		//error condition
-		ResourceCentre.addCamcorder(camcorderList, cc2);	
-		cc2.setIsAvailable(false);
-		ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0012", "8-8-2020" );
-		assertFalse("Test that un-available item is NOT ok to loan?", ok);
+		ResourceCentre.addMenu(menuItem, m2);	
+		m2.setIsAvailable(false);
+		ok = ResourceCentre.doMenu(menuItem, "", "" );
+		assertFalse("Test that there are unavailable item?", ok);
 		//error condition
-		ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0013", "8-8-2020" );
-		assertFalse("Test that non-esiting item is NOT ok to loan?", ok);
+		ok = ResourceCentre.doMenu(menuItem, "", "" );
+		assertFalse("Test if there is the same item?", ok);	
 		
 	}
 	
 	@Test
 	public void testDoAddMenu() {
 		//boundary
-		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
-		ResourceCentre.addChromebook(chromebookList, cb1);
+		assertNotNull("Test if there is valid menuItem to add to", menuItem);
+		ResourceCentre.addMenu(menuItem, m1);
 		//normal
-		Boolean ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "8-8-2020" );
-		assertTrue("Test if an available item is ok to loan?", ok);		
+		Boolean ok = ResourceCentre.doLoanMenu(menuItem, "Taco", "" );
+		assertTrue("Test if item is available", ok);		
 		//error condition
-		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "8-8-2020" );
-		assertFalse("Test if the same item is NOT ok to loan again?", ok);	
+		ok = ResourceCentre.doMenu(menuItem, "Ramen", "" );
+		assertFalse("Test if there is the same item?", ok);	
 		//error
-		ResourceCentre.addChromebook(chromebookList, cb2);
-		cb2.setIsAvailable(false);
-		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0012", "8-8-2020" );
-		assertFalse("Test that un-available item is NOT ok to loan?", ok);
+		ResourceCentre.addMenu(menuItem, m2);
+		m2.setIsAvailable(false);
+		ok = ResourceCentre.doMenu(menuItem, "Taco", "" );
+		assertFalse("Test that there are unavailable items?", ok);
 		//error condition
-		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0013", "8-8-2020" );
-		assertFalse("Test that non-esiting item is NOT ok to loan?", ok);
+		ok = ResourceCentre.doMenu(menuItem, "Ramen", "" );
+		assertFalse("Test that there are non-existing items?", ok);
 		
 	}
 	
 	@Test
 	public void testDoUpdateMenu() {
 		//boundary
-		assertNotNull("Test if there is valid Camcorder arraylist to add to", camcorderList);
-		ResourceCentre.addCamcorder(camcorderList, cc1);
+		assertNotNull("Test if there is valid menuitem to add to", menuItem);
+		ResourceCentre.addMenu(menuItem, m1);
 		//error
-		Boolean isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0011");
-		assertFalse("Test if available camcorder CC0011 is returned -false?", isReturned);		
+		Boolean isReturned = ResourceCentre.doReturnCamcorder(menuItem, "Taco");
+		assertFalse("Test if available taco is changed -false?", isReturned);		
 		//normal
-		ResourceCentre.addCamcorder(camcorderList, cc2);
-		cc2.setIsAvailable(false);
-		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0012");
-		assertTrue("Test if loaned out amcorder CC0012 is returned- true", isReturned);
+		ResourceCentre.addMenu(menuItem, m2);
+		m2.setIsAvailable(false);
+		isReturned = ResourceCentre.doReturnMenu(menuItem, "Ramen");
+		assertTrue("Test if Ramen is changed- true", isReturned);
 		//error
-		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0013");
-		assertFalse("Test if non-existing amcorder CC0013 is returned - false?", isReturned);
+		isReturned = ResourceCentre.doReturnMenu(menuItem, "Ramen");
+		assertFalse("Test if non-existing Ramen is changed - false?", isReturned);
 		
 	}
 	@Test
 	public void testDoDeleteMenu() {
 		//boundary
-		assertNotNull("Check if there is valid chromebook arraylist to add to", chromebookList);
-		ResourceCentre.addChromebook(chromebookList, cb1);
+		assertNotNull("Check if there is valid menuItem to delete", menuItem);
+		ResourceCentre.deleteMneu(menuItem, m1);
 
 		//error
-		Boolean isReturned = ResourceCentre.doReturnChromebook(chromebookList, "CB0011");
-		assertFalse("Check that available chromebook CB0011 is returned - false?", isReturned);		
+		Boolean isDeleted = ResourceCentre.doDeletemenu(menuItem, "Taco");
+		assertFalse("Check that available Taco is deleted - false?", isDeleted);		
 		//normal
-		ResourceCentre.addChromebook(chromebookList, cb2);
-		cb2.setIsAvailable(false);
-		isReturned = ResourceCentre.doReturnChromebook(chromebookList, "CB0012");
-		assertTrue("Check that loanded out chromebook CB0012 is returned - true", isReturned);
+		ResourceCentre.addMenuItem(menuItem,m2);
+		m2.setIsAvailable(false);
+		isDeleted = ResourceCentre.doDeleteMenu(menuItem, "Ramen");
+		assertTrue("Check that ramen is deleted - true", isDeleted);
 		//error
-		isReturned = ResourceCentre.doReturnChromebook(chromebookList, "CB0013");
-		assertFalse("Check that non-existing chromebook CB0013  is returned - false?", isReturned);
+		isDeleted = ResourceCentre.doDeleteMenu(menuItem, "Ramen");
+		assertFalse("Check that non-existing ramen  is returned - false?", isDeleted);
 	}
 	@After
 	public void tearDown() throws Exception {
-		cc1 = null;
-		cc2 = null;
-		cb1 = null;
-		cb2 = null;
-		camcorderList = null;
-		chromebookList = null;
+		m1 = null;
+		m2 = null;
+	
+	
 
 	}
 
