@@ -7,8 +7,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudy {
+<<<<<<< HEAD
 	private Menu m1;
 	private Menu m2;
+=======
+	private MenuItem m1;
+	private MenuItem m2;
+>>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
 
 	private User u1;
 	private User u2;
