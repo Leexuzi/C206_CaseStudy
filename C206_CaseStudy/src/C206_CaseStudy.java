@@ -12,17 +12,15 @@ public class C206_CaseStudy {
         ArrayList<Vendor> vendorsList = new ArrayList<>();
         ArrayList<Order> ordersList = new ArrayList<>();
 
-        parents.placeOrder(menu, menuItem, 2);
-
         // Additional interactions can be added here
 
 		menusList.add(new MenuItem("Taco", 2));
-		userList.add(new User("ashhhlolol", "Password1234"));
+		usersList.add(new User("ashhhlolol", "Password1234"));
 		schoolsList.add(new School("Republic Poly", 4));
 		adminsList.add(new Admin("waynerei", "Password1234"));
-		parentList.add(new Parent("mother", "Password1234"));
-		vendorList.add(new Vendor("vendor", "Password1234"));
-		ordersList.add(new Order("Mother", "Ramen", true , true));
+		parentsList.add(new Parent("mother", "Password1234", "Credit Billing"));
+		vendorsList.add(new Vendor("vendor", "Password1234", "11111111", "address"));
+		ordersList.add(new Order(parentsList.get(0), "Ramen"));
 		
 		int option = 0;
 
