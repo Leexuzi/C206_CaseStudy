@@ -2,12 +2,14 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
-	public static void main(String[] args) {
-		
-		
+    public static void main(String[] args) {
+        // Sample code for demonstrating interactions
+        ArrayList<Menu> menus = new ArrayList<>();
+        ArrayList<User> users = new ArrayList<>();
 
-		ArrayList<Admin> camcorderList = new ArrayList<Camcorder>();
-		ArrayList<Chromebook> chromebookList = new ArrayList<Chromebook>();
+        parent.placeOrder(menu, menuItem, 2);
+
+        // Additional interactions can be added here
 
 		camcorderList.add(new Camcorder("CC001", "Sony HDR-CX405", 35));
 		camcorderList.add(new Camcorder("CC002", "Panasonic HC-MDH2", 10));
