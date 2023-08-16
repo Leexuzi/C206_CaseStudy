@@ -317,6 +317,10 @@ public class Main {
 		School newSchool = new School(name, id);
 		schoolsList.add(newSchool);
 	}
+	  
+	public static void addOrder(ArrayList<Order> orderList, Order newOrder) {
+	    orderList.add(newOrder);
+	}
 	
 	public static void removeSchool(ArrayList<School> schoolsList) {
 		setHeader("REMOVE SCHOOL");

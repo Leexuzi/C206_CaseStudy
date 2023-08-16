@@ -172,6 +172,8 @@ public class C206_CaseStudyTest {
 		assertSame("Check that User is added",u1, userList.get(0));
 
     }
+    
+    
     @Test
     public void testDeleteUser() {
         assertNotNull("Check if there is valid user to delete", menuList);
@@ -223,14 +225,18 @@ public class C206_CaseStudyTest {
     
     @Test
     public void testAddOrder() {
-        assertNotNull("Check if there is valid menuItem to delete", menuList);
+        assertNotNull("Check if there is a valid orderList to add orders to", orderList);
         
-        // ... (other testDoDeleteMenu assertions)
+        int initialSize = orderList.size();
+        
         Main.addOrder(orderList, o1);
-		assertEquals("Check that Order arraylist size is 1", 1, orderList.size());
-		assertSame("Check that Order is added",o1, orderList.get(0));
 
+        assertEquals("Check that orderList size increased by 1", 1, orderList.size());
+        assertTrue("Check that the order was added to orderList", orderList.contains(o1));
     }
+
+    
+    
     @Test
     public void testUpdateOrder() {
         assertNotNull("Check if there is valid menuItem to delete", menuList);
