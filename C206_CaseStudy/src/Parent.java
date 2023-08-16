@@ -15,4 +15,3 @@ public class Parent extends User{
 		this.paymentPreferred = paymentPreferred;
 	}
 }
-
