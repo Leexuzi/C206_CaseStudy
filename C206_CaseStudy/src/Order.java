@@ -3,13 +3,15 @@ import java.util.List;
 
 public class Order {
     private Parent parent;
-    private List<MenuItem> items;
+    private ArrayList<MenuItem> items;
+    private String orderName;
     private boolean isPaid;
     private boolean isDelivered;
 
-    public Order(Parent parent, String item) {
+    public Order(Parent parent, ArrayList<MenuItem> item, String orderName) {
         this.parent = parent;
         this.items = new ArrayList<>();
+        this.orderName = orderName;
         this.isPaid = false;
         this.isDelivered = false;
     }
@@ -18,8 +20,12 @@ public class Order {
         return parent;
     }
 
-    public List<MenuItem> getItems() {
+    public ArrayList<MenuItem> getItems() {
         return items;
+    }
+    
+    public String getOrderName() {
+    	return orderName;
     }
 
     public void addItem(MenuItem item) {
@@ -47,6 +53,7 @@ public class Order {
         StringBuilder sb = new StringBuilder();
         sb.append("Parent: ").append(parent.getUsername()).append("\n");
         sb.append("Items:\n");
+        sb.append("Name: ").append(orderName).append("\n");
         for (MenuItem item : items) {
             sb.append(item).append("\n");
         }
