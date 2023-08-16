@@ -36,7 +36,6 @@ public class Main {
 		int option = 0;
 		int user = 0;
 		
-<<<<<<< HEAD
 		option = Helper.readInt("a");
 		//if login was chosen
 		if(option == 2) {
@@ -52,7 +51,6 @@ public class Main {
 						System.out.println("1");
 					}
 				}
-=======
 		if(option == 1) {
 			signup(usersList);
 		}
@@ -60,29 +58,22 @@ public class Main {
 			int result = login(usersList);
 			if(result == 1) {
 				parentMenu(parentsList, menuItemsList, ordersList);
->>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
 			}
 			else if(result == 2) {
-<<<<<<< HEAD
 //				vendorMenu();
 			}
 			else if(result == 3){
 //				adminMenu();
-=======
 				vendorMenu(vendorsList, menuItemsList, ordersList);
 			}
 			else if(result == 3){
 				adminMenu(parentsList, vendorsList, ordersList);
->>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
 			}
 			else{
 				System.out.println("Login in failed");
 			}
 		}
-<<<<<<< HEAD
     }
-=======
->>>>>>> branch 'master' of https://github.com/Leexuzi/C206_CaseStudy.git
     
     }
 <<<<<<< HEAD
