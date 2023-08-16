@@ -154,7 +154,7 @@ public class Main {
 	public static void viewAllOrders(ArrayList<Order> orderList) {
 	    setHeader("ORDER LIST");
 	    for(Order order:orderList) {
-	    	order.toString();
+	    	System.out.println(order);
 	    }
 	}
 	
@@ -347,6 +347,19 @@ public class Main {
 			}
 		}
 	}
+	
+	public static void removeOrder(ArrayList<String> orderList, String orderIdToDelete) {
+	    setHeader("REMOVE ORDER");
+	    for (int i = 0; i < orderList.size(); i++) {
+	        if (orderList.get(i).equals(orderIdToDelete)) {
+	            orderList.remove(i);
+	            System.out.println("Order with ID " + orderIdToDelete + " has been removed.");
+	            return;
+	        }
+	    }
+	    System.out.println("Order with ID " + orderIdToDelete + " not found.");
+	}
+	
 	
 	public static int signup(ArrayList<User> usersList) {
 	    setHeader("SIGN UP");

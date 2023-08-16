@@ -80,6 +80,15 @@ public class C206_CaseStudyTest {
 
 
     }
+    
+    @Test
+    public void testDeleteOrder() {
+        assertNotNull("Test if there is a valid orderList to delete", orderList);
+
+        Main.removeOrder(orderList, o1); // Modify the second argument based on your order ID
+        assertEquals("Check that Order arraylist size is 1", 1, orderList.size());
+        assertSame("Check that Order is added", o1, orderList.get(0));
+    }
 
     @Test
     public void testAddAccount() {
@@ -162,6 +171,26 @@ public class C206_CaseStudyTest {
 		assertFalse("Test that non-esiting item is NOT ok to delete?", ok);
         
     }
+    
+    @Test
+    public void testDoDeleteOrder() {
+        assertNotNull("Check if there is a valid menuList to delete", menuList);
+
+        Main.removeOrder(menuList, "Taco"); // Modify the second argument based on your order ID
+
+        // Normal
+        boolean ok = Main.doDeleteOrder(menuList, "Taco", 2);
+        assertTrue("Test if an available order is ok to update?", ok);
+
+        // Error conditions
+        ok = Main.doDeleteOrder(menuList, "Taco", 2);
+        assertFalse("Test if the same order is NOT ok to update again?", ok);
+
+        ok = Main.doDeleteOrder(menuList, "Taco", 2);
+        assertFalse("Test that unavailable order is NOT ok to delete?", ok);
+    }
+    
+    
     @Test
     public void testAddUser() {
         assertNotNull("Check if there is valid user to add", userList);
@@ -194,6 +223,28 @@ public class C206_CaseStudyTest {
 		assertSame("Check that User is added",u1, userList.get(0));
 
     }
+    
+    @Test
+    public void testViewOrder() {
+        assertNotNull("Check if there is a valid orderList to view", orderList);
+
+        // Create sample order(s) for testing
+        Order sampleOrder1 = createSampleOrder("Item A", "Processing");
+        Order sampleOrder2 = createSampleOrder("Item B", "Order Completed");
+        orderList.add(sampleOrder1);
+        orderList.add(sampleOrder2);
+
+        Main.viewAllOrders(orderList);
+
+        String expectedOutput = generateExpectedOutput(sampleOrder1, sampleOrder2);
+        String actualOutput = systemOutRule.getLog().trim();
+
+        assertEquals("Check if printed output matches expected output", expectedOutput, actualOutput);
+    }
+    
+
+    
+    
     @Test
     public void testAddSchool() {
         assertNotNull("Check if there is valid menuItem to delete", menuList);
@@ -246,15 +297,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Order arraylist size is 1", 1, orderList.size());
 		assertSame("Check that Order is added",o1, orderList.get(0));
     }
-    @Test
-    public void testDeleteOrder() {
-        assertNotNull("Check if there is valid menuItem to delete", menuList);
-        
-        // ... (other testDoDeleteMenu assertions)
-        Main.deleteOrder(orderList, o1);
-		assertEquals("Check that Order arraylist size is 1", 1, orderList.size());
-		assertSame("Check that Order is added",o1, orderList.get(0));
-    }
+    
     @Test
     public void testAddPayment() {
         assertNotNull("Check if there is valid menuItem to delete", menuList);
@@ -307,6 +350,8 @@ public void testDeleteVendor() {
 	assertSame("Check that Vendor is added",v1,vendorList.get(0));
 
 }
+
+
 @Test
 public void testAddVendor() {
     assertNotNull("Check if there is valid menuItem to delete", menuList);
@@ -316,6 +361,7 @@ public void testAddVendor() {
 	assertEquals("Check that Vendor arraylist size is 1", 1, vendorList.size());
 	assertSame("Check that Vendor is added",v1,vendorList.get(0));
 }
+
     
 
     @After
