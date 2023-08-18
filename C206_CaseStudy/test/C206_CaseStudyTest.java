@@ -92,12 +92,12 @@ public class C206_CaseStudyTest {
 
     @Test
     public void testAddAccount() {
-        assertNotNull("Test if there is valid menuItem to retrieve item from", menuList);
+        assertNotNull("Test if there is valid addAccount to retrieve account from", userList);
         
         // ... (other testRegisterAccount assertions)
         Main.addAccount(userList, u1);
-		assertEquals("Check that Menu arraylist size is 1", 1, menuList.size());
-		assertSame("Check that Menu is added",m1, menuList.get(0));
+		assertEquals("Check that User arraylist size is 1", 1, userList.size());
+		assertSame("Check that Account is added",a1, userList.get(0));
 
 
     }
@@ -247,7 +247,7 @@ public class C206_CaseStudyTest {
     
     @Test
     public void testAddSchool() {
-        assertNotNull("Check if there is valid menuItem to delete", menuList);
+        assertNotNull("Check if there is valid schoolList to add", schooList);
         
         // ... (other testDoDeleteMenu assertions)
         Main.addSchool(schoolList, s1);
@@ -354,9 +354,8 @@ public void testDeleteVendor() {
 
 @Test
 public void testAddVendor() {
-    assertNotNull("Check if there is valid menuItem to delete", menuList);
+    assertNotNull("Check if there is valid vendorList to add", vendorList);
     
-    // ... (other testDoDeleteMenu assertions)
     Main.addVendor(vendorList, v1);
 	assertEquals("Check that Vendor arraylist size is 1", 1, vendorList.size());
 	assertSame("Check that Vendor is added",v1,vendorList.get(0));
